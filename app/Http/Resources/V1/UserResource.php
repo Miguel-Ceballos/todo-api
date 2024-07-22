@@ -19,7 +19,12 @@ class UserResource extends JsonResource
             'id' => $this->id,
             'attributes' => [
                 'name' => $this->name,
-                'email' => $this->email
+                'email' => $this->email,
+                $this->mergeWhen($request->routeIs('authors.show'), [
+                    'emailVerifiedAt' => $this->emailVerifiedAt,
+                    'created_at' => $this->created_at,
+                    'updated_at' => $this->updated_at,
+                ])
             ],
             'includes' => [
                 'message' => 'todo'

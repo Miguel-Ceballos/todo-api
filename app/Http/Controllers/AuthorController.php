@@ -12,4 +12,9 @@ class AuthorController extends Controller
     {
         return UserResource::collection(User::all());
     }
+
+    public function show($author_id)
+    {
+        return new UserResource(User::findOrFail($author_id));
+    }
 }
