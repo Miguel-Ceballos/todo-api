@@ -3,14 +3,44 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginUserRequest;
+use App\Models\User;
+use App\Traits\ApiResponses;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    public function login()
+    use ApiResponses;
+
+    public function register()
     {
-        return response()->json([
-            'message' => 'Login success'
-        ]);
+
+    }
+
+    public function login(LoginUserRequest $request)
+    {
+        $request->validated($request->all());
+
+        if ( ! \Auth::attempt($request->only('email', 'password')) ) {
+            return $this->error('Invalid credentials.', 401);
+        }
+
+        $user = User::firstWhere('email', $request->email);
+
+        return $this->ok(
+            'Authenticated',
+            [
+                'token' => $user->createToken(
+                    'API Token for ' . $user->email,
+                    [ '*' ],
+                    now()->addMonth()
+                )->plainTextToken
+            ]
+        );
+    }
+
+    public function logout()
+    {
+
     }
 }
