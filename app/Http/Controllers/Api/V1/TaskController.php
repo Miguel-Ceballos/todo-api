@@ -5,16 +5,18 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
+use App\Http\Resources\V1\TaskResource;
 use App\Models\Task;
+use PHPUnit\Framework\Attributes\Ticket;
 
 class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($author_id)
     {
-        //
+        return TaskResource::collection(Task::where('user_id', $author_id)->get());
     }
 
     /**
