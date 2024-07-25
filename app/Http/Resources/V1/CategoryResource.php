@@ -14,6 +14,25 @@ class CategoryResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'type' => 'category',
+            'id' => $this->id,
+            'attributes' => [
+                'title' => $this->title,
+                'slug' => $this->slug,
+                $this->mergeWhen($request->routeIs('categories.show'), [
+                    'createdAt' => $this->created_at,
+                    'updatedAt' => $this->updated_at,
+                ])
+            ],
+            'relationships' => [
+                'author' => [
+                    'data' => [
+                        'type' => 'user',
+                        'id' => $this->user_id,
+                    ]
+                ]
+            ]
+        ];
     }
 }
