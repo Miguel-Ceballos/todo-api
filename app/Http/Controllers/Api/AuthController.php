@@ -7,6 +7,7 @@ use App\Http\Requests\LoginUserRequest;
 use App\Models\User;
 use App\Traits\ApiResponses;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -21,7 +22,7 @@ class AuthController extends Controller
     {
         $request->validated($request->all());
 
-        if ( ! \Auth::attempt($request->only('email', 'password')) ) {
+        if ( ! Auth::attempt($request->only('email', 'password')) ) {
             return $this->error('Invalid credentials.', 401);
         }
 
@@ -39,8 +40,10 @@ class AuthController extends Controller
         );
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
+        $request->user()->currentAccessToken()->delete();
 
+        return $this->ok('');
     }
 }
