@@ -10,8 +10,8 @@ class Category extends Model
 {
     use HasFactory;
 
-    public function author(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 }
