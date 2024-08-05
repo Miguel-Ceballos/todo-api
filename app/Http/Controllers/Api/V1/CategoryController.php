@@ -7,15 +7,16 @@ use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Http\Resources\V1\CategoryResource;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index($author_id)
+    public function index()
     {
-        return CategoryResource::collection(Category::where('user_id', $author_id)->get());
+        return CategoryResource::collection(Auth::user()->categories);
     }
 
     /**
@@ -31,7 +32,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return new CategoryResource($category);
     }
 
     /**
