@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
-Route::middleware('auth:sanctum')->apiResource('authors.categories', CategoryController::class);
-Route::middleware('auth:sanctum')->apiResource('authors.tasks', TaskController::class);
+Route::middleware('auth:sanctum')->apiResource('user.categories', CategoryController::class);
+Route::middleware('auth:sanctum')->apiResource('user.tasks', TaskController::class);
 Route::apiResource('authors', AuthorController::class);
