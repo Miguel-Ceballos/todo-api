@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateCategoryRequest;
 use App\Http\Resources\V1\CategoryResource;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -24,7 +25,13 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+        $model = [
+            'title' => $request->input('data.attributes.title'),
+            'slug' => Str::slug($request->input('data.attributes.title')),
+            'user_id' => Auth::id(),
+        ];
+
+        return new CategoryResource(Category::create($model));
     }
 
     /**

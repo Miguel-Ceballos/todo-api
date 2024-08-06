@@ -11,7 +11,7 @@ class StoreCategoryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class StoreCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'data.attributes.title' => 'required|string|max:50',
+            'data.attributes.slug' => 'string',
+            'data.relationships.user.data.id' => 'required|integer|exists:users,id',
         ];
     }
 }

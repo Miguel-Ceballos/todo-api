@@ -26,7 +26,7 @@ class CategoryResource extends JsonResource
                 ])
             ],
             'relationships' => [
-                'author' => [
+                'user' => [
                     'data' => [
                         'type' => 'user',
                         'id' => $this->user_id,
