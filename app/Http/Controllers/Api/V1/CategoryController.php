@@ -50,7 +50,13 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $model = [
+            'title' => $request->input('data.attributes.title'),
+            'slug' => Str::slug($request->input('data.attributes.title')),
+            'user_id' => Auth::id(),
+        ];
+        $category->update($model);
+        return new CategoryResource($category);
     }
 
     /**
