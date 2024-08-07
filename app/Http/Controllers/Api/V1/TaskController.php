@@ -7,6 +7,7 @@ use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
 use App\Http\Resources\V1\TaskResource;
 use App\Models\Task;
+use Illuminate\Support\Facades\Auth;
 use PHPUnit\Framework\Attributes\Ticket;
 
 class TaskController extends Controller
@@ -14,9 +15,9 @@ class TaskController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($author_id)
+    public function index()
     {
-        return TaskResource::collection(Task::where('user_id', $author_id)->get());
+        return TaskResource::collection(Auth::user()->tasks);
     }
 
     /**
@@ -32,7 +33,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //
+        return new TaskResource($task);
     }
 
     /**
