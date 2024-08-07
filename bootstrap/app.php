@@ -22,6 +22,20 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withExceptions(function (Exceptions $exceptions) {
+        $exceptions->render(function(ValidationException $exception){
+            $errors = [];
+            foreach ($exception->errors() as $key => $value)
+                foreach ($value as $message){
+                    $errors[] = [
+                        'status' => $exception->status,
+                        'message' => $message,
+                        'source' => $key
+                    ];
+                }
+            return response()->json([
+                'errors' => $errors
+            ]);
+        });
         $exceptions->render(function(NotFoundHttpException $e) {
             return response()->json([
                 'errors' => [
