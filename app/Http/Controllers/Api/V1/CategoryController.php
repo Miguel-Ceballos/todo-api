@@ -7,13 +7,17 @@ use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Http\Resources\V1\CategoryResource;
 use App\Models\Category;
+use App\Policies\CategoryPolicy;
 use App\Traits\ApiResponses;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 
-class CategoryController extends Controller
+class CategoryController extends ApiController
 {
     use ApiResponses;
+
+    protected $policyClass = CategoryPolicy::class;
 
     /**
      * Display a listing of the resource.
@@ -42,7 +46,10 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return new CategoryResource($category);
+        if ( $this->isAble('view', $category) ) {
+            return new CategoryResource($category);
+        }
+        return $this->notAuthorized('You are not authorized to view that category');
     }
 
     /**
@@ -50,13 +57,15 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        $model = [
-            'title' => $request->input('data.attributes.title'),
-            'slug' => Str::slug($request->input('data.attributes.title')),
-            'user_id' => Auth::id(),
-        ];
-        $category->update($model);
-        return new CategoryResource($category);
+        if ( $this->isAble('update', $category) ) {
+            $model = [
+                'title' => $request->input('data.attributes.title'),
+                'slug' => Str::slug($request->input('data.attributes.title')),
+            ];
+            $category->update($model);
+            return new CategoryResource($category);
+        }
+        return $this->notAuthorized('You are not authorized to update that category');
     }
 
     /**
@@ -64,7 +73,11 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        $category->delete();
-        return $this->ok('Ticket successfully deleted');
+        if ( $this->isAble('delete', $category) ) {
+            $category->delete();
+            return $this->ok('Ticket successfully deleted');
+        }
+        return $this->notAuthorized('You are not authorized to delete that category');
+
     }
 }
