@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 return Application::configure(basePath: dirname(__DIR__))
@@ -21,12 +22,12 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        $exceptions->render(function(NotFoundHttpException $e, $request) {
+        $exceptions->render(function(NotFoundHttpException $e) {
             return response()->json([
                 'errors' => [
-                    'code' => $e->getStatusCode(),
-                    'type' => 'NotFoundHttpException',
+                    'status' => $e->getStatusCode(),
                     'message' => $e->getMessage(),
+                    'source' => '',
                 ]
             ]);
         });
