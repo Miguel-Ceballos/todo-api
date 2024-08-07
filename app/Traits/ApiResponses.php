@@ -8,10 +8,10 @@ trait ApiResponses
 {
     public function ok($message, $data = []): JsonResponse
     {
-        return $this->success($message, $data, 200);
+        return $this->success($message, $data);
     }
 
-    public function success($message, $data, $statusCode = 200): JsonResponse
+    protected function success($message, $data, $statusCode = 200): JsonResponse
     {
         return response()->json([
             'data' => $data,
@@ -20,11 +20,26 @@ trait ApiResponses
         ], $statusCode);
     }
 
-    public function error($message, $statusCode): JsonResponse
+    protected function error($errors = [], $statusCode = null): JsonResponse
     {
+        if ( is_string($errors) ) {
+            return response()->json([
+                'message' => $errors,
+                'status' => $statusCode
+            ], $statusCode);
+        }
+
         return response()->json([
-            'message' => $message,
-            'status' => $statusCode
+            'errors' => $errors,
         ], $statusCode);
+    }
+
+    protected function notAuthorized($message): JsonResponse
+    {
+        return $this->error([
+            'status' => 401,
+            'message' => $message,
+            'source' => ''
+        ], 401);
     }
 }
