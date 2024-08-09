@@ -7,11 +7,14 @@ use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
 use App\Http\Resources\V1\TaskResource;
 use App\Models\Task;
+use App\Traits\ApiResponses;
 use Illuminate\Support\Facades\Auth;
 use PHPUnit\Framework\Attributes\Ticket;
 
 class TaskController extends Controller
 {
+    use ApiResponses;
+
     /**
      * Display a listing of the resource.
      */
@@ -58,6 +61,7 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $task->delete();
+        return $this->ok('Task successfully deleted');
     }
 }
