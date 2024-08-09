@@ -32,6 +32,9 @@ class CategoryResource extends JsonResource
                         'id' => $this->user_id,
                     ]
                 ]
+            ],
+            'links' => [
+                'self' => route('categories.show', ['category' => $this->id])
             ]
         ];
     }
