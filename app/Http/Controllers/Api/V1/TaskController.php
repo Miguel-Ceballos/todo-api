@@ -25,7 +25,16 @@ class TaskController extends Controller
      */
     public function store(StoreTaskRequest $request)
     {
-        //
+        $model = [
+            'user_id' => Auth::user()->id,
+            'category_id' => $request->input('data.relationships.category.data.id'),
+            'title' => $request->input('data.attributes.title'),
+            'description' => $request->input('data.attributes.description'),
+            'status' => $request->input('data.attributes.status'),
+        ];
+
+        return new TaskResource(Task::create($model));
+
     }
 
     /**

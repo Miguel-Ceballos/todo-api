@@ -11,7 +11,7 @@ class StoreTaskRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +21,15 @@ class StoreTaskRequest extends FormRequest
      */
     public function rules(): array
     {
+        $user_categories = $this->user()->categories;
+        $categories = implode(',', $user_categories->pluck('id')->toArray());
+//        C: completed, D: Doing, P: Pending
         return [
-            //
+            'data.relationships.user.data.id' => 'required|integer|exists:users,id',
+            'data.relationships.category.data.id' => 'required|integer|in:' . $categories,
+            'data.attributes.title' => 'required|string|max:255',
+            'data.attributes.description' => 'required|string|max:500',
+            'data.attributes.status' => 'required|string|in:C,D,P',
         ];
     }
 }
