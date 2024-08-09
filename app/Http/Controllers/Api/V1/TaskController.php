@@ -53,7 +53,16 @@ class TaskController extends Controller
      */
     public function update(UpdateTaskRequest $request, Task $task)
     {
-        //
+        // PATCH Request
+        $model = [
+            'user_id' => Auth::user()->id,
+            'category_id' => $request->input('data.relationships.category.data.id'),
+            'title' => $request->input('data.attributes.title'),
+            'description' => $request->input('data.attributes.description'),
+            'status' => $request->input('data.attributes.status'),
+        ];
+        $task->update($model);
+        return new TaskResource($task);
     }
 
     /**
