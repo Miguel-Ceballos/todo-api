@@ -24,12 +24,17 @@ class StoreTaskRequest extends FormRequest
         $user_categories = $this->user()->categories;
         $categories = implode(',', $user_categories->pluck('id')->toArray());
 //        C: completed, D: Doing, P: Pending
-        return [
+        $rules = [
             'data.relationships.user.data.id' => 'required|integer|exists:users,id',
-            'data.relationships.category.data.id' => 'required|integer|in:' . $categories,
             'data.attributes.title' => 'required|string|max:255',
             'data.attributes.description' => 'required|string|max:500',
             'data.attributes.status' => 'required|string|in:C,D,P',
         ];
+
+        if ($this->routeIs('categories.store')){
+            $rules['data.relationships.category.data.id'] = 'required|integer|in:' . $categories;
+        }
+
+        return $rules;
     }
 }
