@@ -25,10 +25,10 @@ class UpdateTaskRequest extends FormRequest
         $categories = implode(',', $user_categories->pluck('id')->toArray());
         return [
             'data.relationships.user.data.id' => 'prohibited',
-            'data.relationships.category.data.id' => 'sometimes|integer|in:' . $categories,
-            'data.attributes.title' => 'sometimes|string|max:255',
-            'data.attributes.description' => 'sometimes|string|max:500',
-            'data.attributes.status' => 'sometimes|string|in:C,D,P',
+            'data.relationships.category.data.id' => 'required|integer|in:' . $categories,
+            'data.attributes.title' => 'required|string|max:255',
+            'data.attributes.description' => 'string|max:500',
+            'data.attributes.status' => 'required|string|in:C,D,P',
         ];
     }
 }

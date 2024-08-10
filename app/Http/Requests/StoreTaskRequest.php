@@ -27,7 +27,7 @@ class StoreTaskRequest extends FormRequest
         $rules = [
             'data.relationships.user.data.id' => 'required|integer|exists:users,id',
             'data.attributes.title' => 'required|string|max:255',
-            'data.attributes.description' => 'required|string|max:500',
+            'data.attributes.description' => 'string|max:500',
             'data.attributes.status' => 'required|string|in:C,D,P',
         ];
 
