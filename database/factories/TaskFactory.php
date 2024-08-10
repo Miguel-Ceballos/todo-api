@@ -18,13 +18,13 @@ class TaskFactory extends Factory
      */
     public function definition(): array
     {
-        #C: completed, I: In Progress, D: Done, T: To do
+        #C: completed, D: Doing, P: Pending
         return [
             'user_id' => User::factory(),
             'category_id' => Category::factory(),
             'title' => fake()->words(2, true),
             'description' => fake()->paragraph(1),
-            'status' => fake()->randomElement([ 'C', 'I', 'D', 'T' ])
+            'status' => fake()->randomElement([ 'C', 'D', 'P' ])
         ];
     }
 }

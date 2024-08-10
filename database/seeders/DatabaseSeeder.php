@@ -16,15 +16,28 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $users = User::factory(3)->create();
+        $users = User::factory(5)->create();
 
-        $categories = Category::factory(5)
+        $categories = Category::factory(20)
             ->recycle($users)
             ->create();
 
-        Task::factory(100)
-            ->recycle($users)
-            ->recycle($categories)
-            ->create();
+//        Task::factory(200)
+//            ->recycle($users)
+//            ->recycle($categories)
+//            ->create();
+
+        for ( $i = 0; $i < 30; $i++ ) {
+            for ($j = 0; $j < 20; $j++ ) {
+                for ($k = 0; $k < 5; $k++ ) {
+                    if ( $categories[$j]['user_id'] === $users[$k]['id'] ) {
+                        Task::factory()
+                            ->recycle($users[$k])
+                            ->recycle($categories[$j])
+                            ->create();
+                    }
+                }
+            }
+        }
     }
 }
