@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
-use App\Http\Resources\V1\CategoryResource;
 use App\Http\Resources\V1\TaskResource;
 use App\Models\Category;
 use App\Models\Task;
+use App\Policies\TaskPolicy;
 use App\Traits\ApiResponses;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CategoryTasksController extends Controller
+class CategoryTasksController extends ApiController
 {
     use ApiResponses;
+
+    protected $policyClass = TaskPolicy::class;
+
     /**
      * Display a listing of the resource.
      */
@@ -46,10 +47,11 @@ class CategoryTasksController extends Controller
     public function show(Category $category, $task_id)
     {
         $task = Task::findOrFail($task_id);
-        if ($task->category_id === $category->id){
+        if ( $this->isAble('view', $task) ) {
             return new TaskResource($task);
         }
-        return $this->error('Task not found', 404);
+        return $this->error('Task not found.', 404);
+
     }
 
     /**
@@ -58,7 +60,7 @@ class CategoryTasksController extends Controller
     public function update(Category $category, $task_id, UpdateTaskRequest $request)
     {
         $task = Task::findOrFail($task_id);
-        if ($task->category_id === $category->id){
+        if ( $this->isAble('view', $task) ) {
             $model = [
                 'user_id' => Auth::user()->id,
                 'category_id' => $request->input('data.relationships.category.data.id'),
@@ -69,7 +71,7 @@ class CategoryTasksController extends Controller
             $task->update($model);
             return new TaskResource($task);
         }
-        return $this->error('Task not found', 404);
+        return $this->error('Task not found.', 404);
     }
 
     /**
@@ -78,10 +80,10 @@ class CategoryTasksController extends Controller
     public function destroy(Category $category, $task_id)
     {
         $task = Task::findOrFail($task_id);
-        if ($task->category_id === $category->id){
+        if ( $this->isAble('view', $task) ) {
             $task->delete();
             return $this->ok('Task deleted successfully');
         }
-        return $this->error('Task not found', 404);
+        return $this->error('Task not found.', 404);
     }
 }
