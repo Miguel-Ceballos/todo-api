@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTaskRequest;
+use App\Http\Requests\UpdateTaskRequest;
 use App\Http\Resources\V1\CategoryResource;
 use App\Http\Resources\V1\TaskResource;
 use App\Models\Category;
@@ -54,9 +55,21 @@ class CategoryTasksController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Category $category, $task_id, UpdateTaskRequest $request)
     {
-        //
+        $task = Task::findOrFail($task_id);
+        if ($task->category_id === $category->id){
+            $model = [
+                'user_id' => Auth::user()->id,
+                'category_id' => $request->input('data.relationships.category.data.id'),
+                'title' => $request->input('data.attributes.title'),
+                'description' => $request->input('data.attributes.description'),
+                'status' => $request->input('data.attributes.status'),
+            ];
+            $task->update($model);
+            return new TaskResource($task);
+        }
+        return $this->error('Task not found', 404);
     }
 
     /**
