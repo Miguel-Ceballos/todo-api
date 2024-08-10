@@ -6,6 +6,7 @@ use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
 use App\Http\Resources\V1\TaskResource;
 use App\Models\Task;
+use App\Policies\TaskPolicy;
 use App\Traits\ApiResponses;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,6 +14,8 @@ class TaskController extends ApiController
 {
     use ApiResponses;
 
+
+    protected $policyClass = TaskPolicy::class;
     /**
      * Display a listing of the resource.
      */
