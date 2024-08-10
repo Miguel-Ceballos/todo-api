@@ -24,8 +24,10 @@ trait ApiResponses
     {
         if ( is_string($errors) ) {
             return response()->json([
-                'message' => $errors,
-                'status' => $statusCode
+                'errors' => [
+                    'status' => $statusCode,
+                    'message' => $errors
+                ]
             ], $statusCode);
         }
 
