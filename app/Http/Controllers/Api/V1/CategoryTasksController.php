@@ -62,8 +62,13 @@ class CategoryTasksController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category, $task_id)
     {
-        //
+        $task = Task::findOrFail($task_id);
+        if ($task->category_id === $category->id){
+            $task->delete();
+            return $this->ok('Task deleted successfully');
+        }
+        return $this->error('Task not found', 404);
     }
 }
