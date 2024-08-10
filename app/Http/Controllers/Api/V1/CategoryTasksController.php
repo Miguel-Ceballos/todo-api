@@ -7,11 +7,14 @@ use App\Http\Requests\StoreTaskRequest;
 use App\Http\Resources\V1\CategoryResource;
 use App\Http\Resources\V1\TaskResource;
 use App\Models\Category;
+use App\Models\Task;
+use App\Traits\ApiResponses;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CategoryTasksController extends Controller
 {
+    use ApiResponses;
     /**
      * Display a listing of the resource.
      */
@@ -39,9 +42,13 @@ class CategoryTasksController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Category $category, $task_id)
     {
-        //
+        $task = Task::findOrFail($task_id);
+        if ($task->category_id === $category->id){
+            return new TaskResource($task);
+        }
+        return $this->error('Task not found', 404);
     }
 
     /**
