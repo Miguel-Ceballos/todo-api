@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Http\Resources\V1\CategoryResource;
@@ -10,7 +9,6 @@ use App\Models\Category;
 use App\Policies\CategoryPolicy;
 use App\Traits\ApiResponses;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 
 class CategoryController extends ApiController
@@ -75,7 +73,7 @@ class CategoryController extends ApiController
     {
         if ( $this->isAble('delete', $category) ) {
             $category->delete();
-            return $this->ok('Ticket successfully deleted');
+            return $this->ok('Category successfully deleted');
         }
         return $this->notAuthorized('You are not authorized to delete that category');
 
