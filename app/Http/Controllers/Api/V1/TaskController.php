@@ -22,7 +22,9 @@ class TaskController extends ApiController
      */
     public function index(TaskFilter $filters)
     {
-        return TaskResource::collection(Task::filter($filters)->get());
+        return TaskResource::collection(
+            Task::where('user_id', Auth::user()->id)->filter($filters)->get()
+        );
     }
 
     /**
