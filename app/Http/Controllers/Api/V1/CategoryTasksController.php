@@ -34,14 +34,7 @@ class CategoryTasksController extends ApiController
     public function store(Category $category, StoreTaskRequest $request)
     {
         if ( $this->isAble('create', $category) ) {
-            $model = [
-                'user_id' => Auth::user()->id,
-                'category_id' => $category->id,
-                'title' => $request->input('data.attributes.title'),
-                'description' => $request->input('data.attributes.description'),
-                'status' => $request->input('data.attributes.status'),
-            ];
-            return new TaskResource($category->tasks()->create($model));
+            return new TaskResource($category->tasks()->create($request->mappedAttributes()));
         }
         return $this->error('Category not found.', 404);
     }
@@ -68,14 +61,7 @@ class CategoryTasksController extends ApiController
         if ( $this->isAble('update', $category) ) {
             $task = Task::findOrFail($task_id);
             if ( $category->id === $task->category_id ) {
-                $model = [
-                    'user_id' => Auth::user()->id,
-                    'category_id' => $request->input('data.relationships.category.data.id'),
-                    'title' => $request->input('data.attributes.title'),
-                    'description' => $request->input('data.attributes.description'),
-                    'status' => $request->input('data.attributes.status'),
-                ];
-                $task->update($model);
+                $task->update($request->mappedAttributes());
                 return new TaskResource($task);
             }
         }

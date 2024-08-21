@@ -32,16 +32,7 @@ class TaskController extends ApiController
      */
     public function store(StoreTaskRequest $request)
     {
-        $model = [
-            'user_id' => Auth::user()->id,
-            'category_id' => $request->input('data.relationships.category.data.id'),
-            'title' => $request->input('data.attributes.title'),
-            'description' => $request->input('data.attributes.description'),
-            'status' => $request->input('data.attributes.status'),
-        ];
-
-        return new TaskResource(Task::create($model));
-
+        return new TaskResource(Task::create($request->mappedAttributes()));
     }
 
     /**
@@ -60,16 +51,8 @@ class TaskController extends ApiController
      */
     public function update(UpdateTaskRequest $request, Task $task)
     {
-        // PATCH Request
         if ($this->isAble('update', $task)){
-            $model = [
-                'user_id' => Auth::user()->id,
-                'category_id' => $request->input('data.relationships.category.data.id'),
-                'title' => $request->input('data.attributes.title'),
-                'description' => $request->input('data.attributes.description'),
-                'status' => $request->input('data.attributes.status'),
-            ];
-            $task->update($model);
+            $task->update($request->mappedAttributes());
             return new TaskResource($task);
         }
         return $this->notAuthorized('You are not authorized to update this task');
