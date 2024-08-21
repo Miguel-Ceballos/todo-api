@@ -51,8 +51,8 @@ class CategoryTasksController extends ApiController
      */
     public function show(Category $category, $task_id)
     {
-        $task = Task::findOrFail($task_id);
         if ( $this->isAble('view', $category) ) {
+            $task = Task::findOrFail($task_id);
             if ( $category->id === $task->category_id ) {
                 return new TaskResource($task);
             }
@@ -65,8 +65,8 @@ class CategoryTasksController extends ApiController
      */
     public function update(Category $category, $task_id, UpdateTaskRequest $request)
     {
-        $task = Task::findOrFail($task_id);
         if ( $this->isAble('update', $category) ) {
+            $task = Task::findOrFail($task_id);
             if ( $category->id === $task->category_id ) {
                 $model = [
                     'user_id' => Auth::user()->id,
@@ -87,8 +87,8 @@ class CategoryTasksController extends ApiController
      */
     public function destroy(Category $category, $task_id)
     {
-        $task = Task::findOrFail($task_id);
         if ( $this->isAble('delete', $category) ) {
+            $task = Task::findOrFail($task_id);
             if ( $category->id === $task->category_id ) {
                 $task->delete();
                 return $this->ok('Task deleted successfully');
