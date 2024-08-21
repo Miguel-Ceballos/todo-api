@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreTaskRequest extends FormRequest
+class StoreTaskRequest extends BaseTaskRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,17 +24,11 @@ class StoreTaskRequest extends FormRequest
         $user_categories = $this->user()->categories;
         $categories = implode(',', $user_categories->pluck('id')->toArray());
 //        C: completed, D: Doing, P: Pending
-        $rules = [
-//            'data.relationships.user.data.id' => 'required|integer|exists:users,id',
+        return [
             'data.attributes.title' => 'required|string|max:255',
             'data.attributes.description' => 'string|max:500',
             'data.attributes.status' => 'required|string|in:C,D,P',
+            'data.relationships.category.data.id' => 'required|integer|in:' . $categories
         ];
-
-        if ($this->routeIs('categories.store')){
-            $rules['data.relationships.category.data.id'] = 'required|integer|in:' . $categories;
-        }
-
-        return $rules;
     }
 }
