@@ -25,7 +25,7 @@ class StoreTaskRequest extends FormRequest
         $categories = implode(',', $user_categories->pluck('id')->toArray());
 //        C: completed, D: Doing, P: Pending
         $rules = [
-            'data.relationships.user.data.id' => 'required|integer|exists:users,id',
+//            'data.relationships.user.data.id' => 'required|integer|exists:users,id',
             'data.attributes.title' => 'required|string|max:255',
             'data.attributes.description' => 'string|max:500',
             'data.attributes.status' => 'required|string|in:C,D,P',
