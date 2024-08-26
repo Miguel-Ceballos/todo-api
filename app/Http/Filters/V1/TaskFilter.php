@@ -6,6 +6,11 @@ use Illuminate\Support\Facades\Auth;
 
 class TaskFilter extends QueryFilter
 {
+
+    public function include($value)
+    {
+        return $this->builder->with($value);
+    }
     public function updatedAt($value)
     {
         $dates = explode(',', $value);
