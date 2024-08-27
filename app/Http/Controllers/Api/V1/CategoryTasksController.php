@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Filters\V1\TaskFilter;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
 use App\Http\Resources\V1\TaskResource;
@@ -20,10 +21,12 @@ class CategoryTasksController extends ApiController
     /**
      * Display a listing of the resource.
      */
-    public function index(Category $category)
+    public function index(Category $category, TaskFilter $filters)
     {
         if ( $this->isAble('viewAny', $category) ) {
-            return TaskResource::collection($category->tasks);
+            return TaskResource::collection(
+                Task::where('category_id', $category->id)->filter($filters)->get()
+            );
         }
         return $this->error('Category Tasks not found.', 404);
     }
