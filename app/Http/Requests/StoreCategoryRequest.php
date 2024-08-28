@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCategoryRequest extends FormRequest
+class StoreCategoryRequest extends BaseCategoryRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,6 @@ class StoreCategoryRequest extends FormRequest
         return [
             'data.attributes.title' => 'required|string|max:50',
             'data.attributes.slug' => 'string',
-            'data.relationships.user.data.id' => 'required|integer|exists:users,id',
         ];
     }
 }

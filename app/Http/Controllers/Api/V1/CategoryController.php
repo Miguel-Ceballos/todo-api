@@ -30,13 +30,7 @@ class CategoryController extends ApiController
      */
     public function store(StoreCategoryRequest $request)
     {
-        $model = [
-            'title' => $request->input('data.attributes.title'),
-            'slug' => Str::slug($request->input('data.attributes.title')),
-            'user_id' => Auth::id(),
-        ];
-
-        return new CategoryResource(Category::create($model));
+        return new CategoryResource(Category::create($request->mappedAttributes()));
     }
 
     /**
@@ -56,11 +50,7 @@ class CategoryController extends ApiController
     public function update(UpdateCategoryRequest $request, Category $category)
     {
         if ( $this->isAble('update', $category) ) {
-            $model = [
-                'title' => $request->input('data.attributes.title'),
-                'slug' => Str::slug($request->input('data.attributes.title')),
-            ];
-            $category->update($model);
+            $category->update($request->mappedAttributes());
             return new CategoryResource($category);
         }
         return $this->notAuthorized('You are not authorized to update that category');
