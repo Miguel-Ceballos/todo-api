@@ -43,6 +43,6 @@ class TaskFilter extends QueryFilter
 
     public function status($value)
     {
-        return $this->builder->where('user_id', Auth::user()->id)->where('status', $value);
+        return $this->builder->where('user_id', Auth::user()->id)->whereIn('status', explode(',', $value));
     }
 }
