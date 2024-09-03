@@ -26,7 +26,7 @@ class StoreTaskRequest extends BaseTaskRequest
 //        C: completed, D: Doing, P: Pending
         return [
             'data.attributes.title' => 'required|string|max:255',
-            'data.attributes.description' => 'string|max:500',
+            'data.attributes.description' => 'nullable|string|max:500',
             'data.attributes.status' => 'required|string|in:C,D,P',
             'data.relationships.category.data.id' => 'required|integer|in:' . $categories
         ];
