@@ -4,9 +4,11 @@ namespace App\Http\Resources\V1;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Laravel\Sanctum\HasApiTokens;
 
 class UserResource extends JsonResource
 {
+    use HasApiTokens;
     /**
      * Transform the resource into an array.
      *
@@ -20,18 +22,18 @@ class UserResource extends JsonResource
             'attributes' => [
                 'name' => $this->name,
                 'email' => $this->email,
-                $this->mergeWhen($request->routeIs('authors.show'), [
+                $this->mergeWhen($request->routeIs('user.show'), [
                     'emailVerifiedAt' => $this->emailVerifiedAt,
                     'created_at' => $this->created_at,
                     'updated_at' => $this->updated_at,
-                ])
+                ]),
             ],
             'includes' => [
                 'message' => 'todo'
             ],
             'links' => [
-                'self' => route('authors.show', $this->id),
-            ]
+                'self' => route('user.show', $this->id),
+            ],
         ];
     }
 }
