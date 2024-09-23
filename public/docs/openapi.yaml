@@ -1,0 +1,4423 @@
+openapi: 3.0.3
+info:
+  title: '4TODO API Documentation'
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/login:
+    post:
+      summary: ''
+      operationId: postApiLogin
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: rmarvin@example.com
+                password:
+                  type: string
+                  description: ''
+                  example: '}OJ:$,c1['
+              required:
+                - email
+                - password
+  /api/logout:
+    post:
+      summary: ''
+      operationId: postApiLogout
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+  /api/register:
+    post:
+      summary: ''
+      operationId: postApiRegister
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be at least 3 characters. Must not be greater than 255 characters.'
+                  example: ioyuhhtloycf
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: zgulgowski@example.com
+                password:
+                  type: string
+                  description: ''
+                  example: 'E.9=6bX9"Pt*A['
+              required:
+                - name
+                - email
+                - password
+  /api/user:
+    get:
+      summary: ''
+      operationId: getApiUser
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    type: user
+                    id: 1
+                    attributes:
+                      name: 'Destiney McKenzie'
+                      email: nmoore@example.net
+                      emailVerifiedAt: null
+                      created_at: '2024-09-15T18:43:53.000000Z'
+                      updated_at: '2024-09-15T18:43:53.000000Z'
+                    includes:
+                      message: todo
+                    links:
+                      self: 'http://localhost/api/user?1'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: user
+                      id:
+                        type: integer
+                        example: 1
+                      attributes:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            example: 'Destiney McKenzie'
+                          email:
+                            type: string
+                            example: nmoore@example.net
+                          emailVerifiedAt:
+                            type: string
+                            example: null
+                          created_at:
+                            type: string
+                            example: '2024-09-15T18:43:53.000000Z'
+                          updated_at:
+                            type: string
+                            example: '2024-09-15T18:43:53.000000Z'
+                      includes:
+                        type: object
+                        properties:
+                          message:
+                            type: string
+                            example: todo
+                      links:
+                        type: object
+                        properties:
+                          self:
+                            type: string
+                            example: 'http://localhost/api/user?1'
+      tags:
+        - Endpoints
+  /api/v1/categories:
+    get:
+      summary: 'Display a listing of the resource.'
+      operationId: displayAListingOfTheResource
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      type: category
+                      id: 2
+                      attributes:
+                        title: 'aliquid ullam'
+                        slug: in-sit-est
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                      links:
+                        self: 'http://localhost/api/v1/categories/2'
+                    -
+                      type: category
+                      id: 19
+                      attributes:
+                        title: 'quidem dolores'
+                        slug: dolorum-officiis-doloremque
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                      links:
+                        self: 'http://localhost/api/v1/categories/19'
+                    -
+                      type: category
+                      id: 20
+                      attributes:
+                        title: 'aperiam odio'
+                        slug: at-vero-nesciunt
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                      links:
+                        self: 'http://localhost/api/v1/categories/20'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        type: category
+                        id: 2
+                        attributes:
+                          title: 'aliquid ullam'
+                          slug: in-sit-est
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                        links:
+                          self: 'http://localhost/api/v1/categories/2'
+                      -
+                        type: category
+                        id: 19
+                        attributes:
+                          title: 'quidem dolores'
+                          slug: dolorum-officiis-doloremque
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                        links:
+                          self: 'http://localhost/api/v1/categories/19'
+                      -
+                        type: category
+                        id: 20
+                        attributes:
+                          title: 'aperiam odio'
+                          slug: at-vero-nesciunt
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                        links:
+                          self: 'http://localhost/api/v1/categories/20'
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: category
+                        id:
+                          type: integer
+                          example: 2
+                        attributes:
+                          type: object
+                          properties:
+                            title:
+                              type: string
+                              example: 'aliquid ullam'
+                            slug:
+                              type: string
+                              example: in-sit-est
+                        relationships:
+                          type: object
+                          properties:
+                            user:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                      example: user
+                                    id:
+                                      type: integer
+                                      example: 1
+                        links:
+                          type: object
+                          properties:
+                            self:
+                              type: string
+                              example: 'http://localhost/api/v1/categories/2'
+      tags:
+        - Endpoints
+    post:
+      summary: 'Store a newly created resource in storage.'
+      operationId: storeANewlyCreatedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  description: ''
+                  example: []
+                  properties:
+                    attributes:
+                      type: object
+                      description: ''
+                      example: []
+                      properties:
+                        title:
+                          type: string
+                          description: 'Must not be greater than 50 characters.'
+                          example: rbhxecjnykbgojwrgbnniryx
+                        slug:
+                          type: string
+                          description: ''
+                          example: neque
+  '/api/v1/categories/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      operationId: displayTheSpecifiedResource
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  errors:
+                    status: 401
+                    message: 'You are not authorized to view that category'
+                    source: ''
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      status:
+                        type: integer
+                        example: 401
+                      message:
+                        type: string
+                        example: 'You are not authorized to view that category'
+                      source:
+                        type: string
+                        example: ''
+      tags:
+        - Endpoints
+    put:
+      summary: 'Update the specified resource in storage.'
+      operationId: updateTheSpecifiedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  description: ''
+                  example: []
+                  properties:
+                    attributes:
+                      type: object
+                      description: ''
+                      example: []
+                      properties:
+                        title:
+                          type: string
+                          description: 'Must not be greater than 50 characters.'
+                          example: abancnrsyharwrit
+                        slug:
+                          type: string
+                          description: ''
+                          example: velit
+                    relationships:
+                      type: object
+                      description: ''
+                      example: []
+                      properties:
+                        user:
+                          type: object
+                          description: ''
+                          example: []
+                          properties:
+                            data:
+                              type: object
+                              description: ''
+                              example: []
+                              properties:
+                                id:
+                                  type: string
+                                  description: ''
+                                  example: null
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      operationId: removeTheSpecifiedResourceFromStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the category.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/v1/categories/{category_id}/tasks':
+    get:
+      summary: 'Display a listing of the resource.'
+      operationId: displayAListingOfTheResource
+      description: ''
+      parameters: []
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  errors:
+                    status: 404
+                    message: 'Category Tasks not found.'
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      status:
+                        type: integer
+                        example: 404
+                      message:
+                        type: string
+                        example: 'Category Tasks not found.'
+      tags:
+        - Endpoints
+    post:
+      summary: 'Store a newly created resource in storage.'
+      operationId: storeANewlyCreatedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  description: ''
+                  example: []
+                  properties:
+                    attributes:
+                      type: object
+                      description: ''
+                      example: []
+                      properties:
+                        title:
+                          type: string
+                          description: 'Must not be greater than 255 characters.'
+                          example: escmenavlbphnylajkcp
+                        description:
+                          type: string
+                          description: 'Must not be greater than 500 characters.'
+                          example: 'Pariatur tempore velit aut ipsa.'
+                        status:
+                          type: string
+                          description: ''
+                          example: P
+                          enum:
+                            - C
+                            - D
+                            - P
+                    relationships:
+                      type: object
+                      description: ''
+                      example: []
+                      properties:
+                        category:
+                          type: object
+                          description: ''
+                          example: []
+                          properties:
+                            data:
+                              type: object
+                              description: ''
+                              example: []
+                              properties:
+                                id:
+                                  type: integer
+                                  description: ''
+                                  example: '19'
+                                  enum:
+                                    - '2'
+                                    - '19'
+                                    - '20'
+    parameters:
+      -
+        in: path
+        name: category_id
+        description: 'The ID of the category.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/v1/categories/{category_id}/tasks/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      operationId: displayTheSpecifiedResource
+      description: ''
+      parameters: []
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  errors:
+                    status: 404
+                    message: 'Category Task not found.'
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      status:
+                        type: integer
+                        example: 404
+                      message:
+                        type: string
+                        example: 'Category Task not found.'
+      tags:
+        - Endpoints
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      operationId: removeTheSpecifiedResourceFromStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+    parameters:
+      -
+        in: path
+        name: category_id
+        description: 'The ID of the category.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+      -
+        in: path
+        name: id
+        description: 'The ID of the task.'
+        example: quibusdam
+        required: true
+        schema:
+          type: string
+  /api/v1/tasks:
+    get:
+      summary: 'Display a listing of the resource.'
+      operationId: displayAListingOfTheResource
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      type: task
+                      id: 2
+                      attributes:
+                        title: 'numquam et'
+                        description: 'Id aut aliquam porro.'
+                        status: C
+                        created_at: '2024-09-15T18:43:54.000000Z'
+                        updated_at: '2024-09-19T19:53:37.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/2'
+                    -
+                      type: task
+                      id: 19
+                      attributes:
+                        title: 'sapiente vel'
+                        description: 'Voluptate voluptas ut occaecati et. Ullam sed facilis maxime quo omnis nihil ea.'
+                        status: C
+                        created_at: '2024-09-15T18:43:54.000000Z'
+                        updated_at: '2024-09-19T19:53:44.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/19'
+                    -
+                      type: task
+                      id: 20
+                      attributes:
+                        title: 'aut omnis'
+                        description: 'Aut omnis voluptatibus nisi. Vel culpa iusto atque perferendis.'
+                        status: C
+                        created_at: '2024-09-15T18:43:54.000000Z'
+                        updated_at: '2024-09-19T19:53:58.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/20'
+                    -
+                      type: task
+                      id: 22
+                      attributes:
+                        title: 'commodi non'
+                        description: 'Est quas et et provident quibusdam. Sed rem quibusdam qui aut adipisci.'
+                        status: P
+                        created_at: '2024-09-15T18:43:54.000000Z'
+                        updated_at: '2024-09-19T03:49:55.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/22'
+                    -
+                      type: task
+                      id: 39
+                      attributes:
+                        title: 'et omnis'
+                        description: 'Corporis harum aut dignissimos officia sequi reiciendis molestiae. Hic natus ex et qui repudiandae quos quaerat.'
+                        status: P
+                        created_at: '2024-09-15T18:43:55.000000Z'
+                        updated_at: '2024-09-19T19:22:59.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/39'
+                    -
+                      type: task
+                      id: 40
+                      attributes:
+                        title: 'sint omnis'
+                        description: 'Aperiam qui debitis quidem eaque eveniet dolore accusantium. Non exercitationem temporibus quisquam.'
+                        status: D
+                        created_at: '2024-09-15T18:43:55.000000Z'
+                        updated_at: '2024-09-15T18:43:55.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/40'
+                    -
+                      type: task
+                      id: 42
+                      attributes:
+                        title: 'aperiam alias'
+                        description: 'Placeat quaerat aut veritatis quaerat beatae ex error.'
+                        status: D
+                        created_at: '2024-09-15T18:43:55.000000Z'
+                        updated_at: '2024-09-15T18:43:55.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/42'
+                    -
+                      type: task
+                      id: 59
+                      attributes:
+                        title: 'molestias aut'
+                        description: 'Reiciendis quam aut aliquam explicabo laboriosam. Officia quam aspernatur et iste id neque accusantium.'
+                        status: P
+                        created_at: '2024-09-15T18:43:55.000000Z'
+                        updated_at: '2024-09-19T19:23:00.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/59'
+                    -
+                      type: task
+                      id: 60
+                      attributes:
+                        title: 'autem quod'
+                        description: 'Quas facere blanditiis consequatur optio et hic.'
+                        status: P
+                        created_at: '2024-09-15T18:43:55.000000Z'
+                        updated_at: '2024-09-15T18:43:55.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/60'
+                    -
+                      type: task
+                      id: 62
+                      attributes:
+                        title: 'ut eius'
+                        description: 'Ut dolor eos quasi sunt odit et perferendis.'
+                        status: D
+                        created_at: '2024-09-15T18:43:55.000000Z'
+                        updated_at: '2024-09-15T18:43:55.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/62'
+                    -
+                      type: task
+                      id: 79
+                      attributes:
+                        title: 'et repellat'
+                        description: 'Consequuntur saepe minima aut ut consectetur quae aspernatur quaerat.'
+                        status: P
+                        created_at: '2024-09-15T18:43:56.000000Z'
+                        updated_at: '2024-09-19T19:23:01.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/79'
+                    -
+                      type: task
+                      id: 80
+                      attributes:
+                        title: 'qui in'
+                        description: 'Exercitationem aut reiciendis libero laudantium quaerat culpa distinctio. Repellendus ipsam eos itaque possimus aliquam id itaque.'
+                        status: C
+                        created_at: '2024-09-15T18:43:56.000000Z'
+                        updated_at: '2024-09-19T19:23:30.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/80'
+                    -
+                      type: task
+                      id: 82
+                      attributes:
+                        title: 'ipsum velit'
+                        description: 'Nobis aliquam magni facilis est exercitationem.'
+                        status: P
+                        created_at: '2024-09-15T18:43:56.000000Z'
+                        updated_at: '2024-09-19T19:23:03.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/82'
+                    -
+                      type: task
+                      id: 99
+                      attributes:
+                        title: 'a vel'
+                        description: 'In omnis blanditiis autem ratione. Asperiores facere at tenetur consequatur.'
+                        status: P
+                        created_at: '2024-09-15T18:43:56.000000Z'
+                        updated_at: '2024-09-19T19:23:04.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/99'
+                    -
+                      type: task
+                      id: 100
+                      attributes:
+                        title: 'sit explicabo'
+                        description: 'Est tempore mollitia tempora quidem eos provident quia ullam.'
+                        status: D
+                        created_at: '2024-09-15T18:43:56.000000Z'
+                        updated_at: '2024-09-15T18:43:56.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/100'
+                    -
+                      type: task
+                      id: 102
+                      attributes:
+                        title: 'accusantium corrupti'
+                        description: 'Exercitationem qui magnam beatae. Repellat cum debitis qui commodi voluptas quia est.'
+                        status: P
+                        created_at: '2024-09-15T18:43:56.000000Z'
+                        updated_at: '2024-09-19T19:23:04.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/102'
+                    -
+                      type: task
+                      id: 119
+                      attributes:
+                        title: 'esse soluta'
+                        description: 'Nihil alias molestiae quasi mollitia qui. Quaerat aut repellat impedit et.'
+                        status: P
+                        created_at: '2024-09-15T18:43:56.000000Z'
+                        updated_at: '2024-09-19T19:23:05.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/119'
+                    -
+                      type: task
+                      id: 120
+                      attributes:
+                        title: 'eum neque'
+                        description: 'Numquam optio nobis perferendis modi.'
+                        status: P
+                        created_at: '2024-09-15T18:43:56.000000Z'
+                        updated_at: '2024-09-19T19:23:06.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/120'
+                    -
+                      type: task
+                      id: 122
+                      attributes:
+                        title: 'ut asperiores'
+                        description: 'Minima qui accusamus similique quis officia voluptas nihil. Reprehenderit commodi velit voluptatem corrupti maxime ut.'
+                        status: P
+                        created_at: '2024-09-15T18:43:56.000000Z'
+                        updated_at: '2024-09-15T18:43:56.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/122'
+                    -
+                      type: task
+                      id: 139
+                      attributes:
+                        title: 'consequuntur enim'
+                        description: 'Quia recusandae voluptatibus impedit dolorem velit ut.'
+                        status: P
+                        created_at: '2024-09-15T18:43:57.000000Z'
+                        updated_at: '2024-09-19T19:23:07.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/139'
+                    -
+                      type: task
+                      id: 140
+                      attributes:
+                        title: 'eaque ut'
+                        description: 'Provident hic velit nihil omnis quos eveniet.'
+                        status: P
+                        created_at: '2024-09-15T18:43:57.000000Z'
+                        updated_at: '2024-09-19T19:23:08.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/140'
+                    -
+                      type: task
+                      id: 142
+                      attributes:
+                        title: 'et recusandae'
+                        description: 'Non temporibus atque recusandae nihil. Hic minus aut eos ratione omnis dolore laudantium sed.'
+                        status: P
+                        created_at: '2024-09-15T18:43:57.000000Z'
+                        updated_at: '2024-09-15T18:43:57.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/142'
+                    -
+                      type: task
+                      id: 159
+                      attributes:
+                        title: 'non non'
+                        description: 'Ea est sequi neque vitae voluptas at consequatur. Nemo officiis qui atque eos quibusdam ad alias.'
+                        status: P
+                        created_at: '2024-09-15T18:43:57.000000Z'
+                        updated_at: '2024-09-19T19:23:08.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/159'
+                    -
+                      type: task
+                      id: 160
+                      attributes:
+                        title: 'adipisci temporibus'
+                        description: 'Est debitis quia possimus dolorem rerum. Corporis veniam ut molestias velit corrupti.'
+                        status: D
+                        created_at: '2024-09-15T18:43:57.000000Z'
+                        updated_at: '2024-09-15T18:43:57.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/160'
+                    -
+                      type: task
+                      id: 162
+                      attributes:
+                        title: 'minus perferendis'
+                        description: 'Id ab cumque est aut sed.'
+                        status: D
+                        created_at: '2024-09-15T18:43:57.000000Z'
+                        updated_at: '2024-09-15T18:43:57.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/162'
+                    -
+                      type: task
+                      id: 179
+                      attributes:
+                        title: 'voluptatum modi'
+                        description: 'Eum perferendis facere laudantium possimus repudiandae et qui. Fuga ut aut est rem omnis earum.'
+                        status: D
+                        created_at: '2024-09-15T18:43:58.000000Z'
+                        updated_at: '2024-09-15T18:43:58.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/179'
+                    -
+                      type: task
+                      id: 180
+                      attributes:
+                        title: 'quod perspiciatis'
+                        description: 'Temporibus facilis ut et reprehenderit vel.'
+                        status: P
+                        created_at: '2024-09-15T18:43:58.000000Z'
+                        updated_at: '2024-09-15T18:43:58.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/180'
+                    -
+                      type: task
+                      id: 182
+                      attributes:
+                        title: 'quas soluta'
+                        description: 'Fuga eum veritatis consequatur eum tempore quaerat ipsa.'
+                        status: P
+                        created_at: '2024-09-15T18:43:58.000000Z'
+                        updated_at: '2024-09-15T18:43:58.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/182'
+                    -
+                      type: task
+                      id: 199
+                      attributes:
+                        title: 'sapiente voluptatem'
+                        description: 'Et sint sint doloribus rerum.'
+                        status: D
+                        created_at: '2024-09-15T18:43:58.000000Z'
+                        updated_at: '2024-09-15T18:43:58.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/199'
+                    -
+                      type: task
+                      id: 200
+                      attributes:
+                        title: 'dolore aspernatur'
+                        description: 'Iste quasi enim soluta ut recusandae. Deleniti ea qui praesentium.'
+                        status: P
+                        created_at: '2024-09-15T18:43:58.000000Z'
+                        updated_at: '2024-09-19T19:23:09.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/200'
+                    -
+                      type: task
+                      id: 202
+                      attributes:
+                        title: 'et aut'
+                        description: 'Cum ipsa accusamus voluptatem quidem minus soluta. Fugit ipsam qui temporibus vel.'
+                        status: P
+                        created_at: '2024-09-15T18:43:58.000000Z'
+                        updated_at: '2024-09-19T19:23:10.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/202'
+                    -
+                      type: task
+                      id: 219
+                      attributes:
+                        title: 'natus cum'
+                        description: 'Reiciendis eveniet eligendi placeat atque nostrum aut asperiores illum. Qui nulla aliquid dignissimos reiciendis.'
+                        status: P
+                        created_at: '2024-09-15T18:43:59.000000Z'
+                        updated_at: '2024-09-19T19:23:11.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/219'
+                    -
+                      type: task
+                      id: 220
+                      attributes:
+                        title: 'eaque quos'
+                        description: 'Quasi natus optio quidem officiis eveniet magni ducimus.'
+                        status: P
+                        created_at: '2024-09-15T18:43:59.000000Z'
+                        updated_at: '2024-09-19T19:23:12.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/220'
+                    -
+                      type: task
+                      id: 222
+                      attributes:
+                        title: 'quia ducimus'
+                        description: 'Veniam provident veniam eaque. Corrupti rem adipisci rerum suscipit quidem sapiente enim.'
+                        status: P
+                        created_at: '2024-09-15T18:43:59.000000Z'
+                        updated_at: '2024-09-15T18:43:59.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/222'
+                    -
+                      type: task
+                      id: 239
+                      attributes:
+                        title: 'asperiores laborum'
+                        description: 'Dolor ut nam ex dolor voluptas quisquam voluptatibus optio.'
+                        status: P
+                        created_at: '2024-09-15T18:43:59.000000Z'
+                        updated_at: '2024-09-19T19:23:12.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/239'
+                    -
+                      type: task
+                      id: 240
+                      attributes:
+                        title: 'natus minus'
+                        description: 'Et assumenda architecto consequatur voluptate ut qui quibusdam similique. Atque facere provident aliquid natus iure blanditiis ipsam aut.'
+                        status: D
+                        created_at: '2024-09-15T18:43:59.000000Z'
+                        updated_at: '2024-09-15T18:43:59.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/240'
+                    -
+                      type: task
+                      id: 242
+                      attributes:
+                        title: 'eum ullam'
+                        description: 'Aut officiis placeat voluptatem aut esse.'
+                        status: P
+                        created_at: '2024-09-15T18:43:59.000000Z'
+                        updated_at: '2024-09-15T18:43:59.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/242'
+                    -
+                      type: task
+                      id: 259
+                      attributes:
+                        title: 'facere quos'
+                        description: 'Aspernatur aut occaecati ut reprehenderit sit harum est. Numquam vitae inventore debitis.'
+                        status: P
+                        created_at: '2024-09-15T18:43:59.000000Z'
+                        updated_at: '2024-09-19T19:23:13.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/259'
+                    -
+                      type: task
+                      id: 260
+                      attributes:
+                        title: 'accusantium dolore'
+                        description: 'Nobis voluptatem qui perspiciatis ut. Adipisci animi voluptas voluptatibus voluptas cum non.'
+                        status: D
+                        created_at: '2024-09-15T18:43:59.000000Z'
+                        updated_at: '2024-09-15T18:43:59.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/260'
+                    -
+                      type: task
+                      id: 262
+                      attributes:
+                        title: 'amet nostrum'
+                        description: 'Expedita est odio aut debitis sunt dolores.'
+                        status: D
+                        created_at: '2024-09-15T18:44:00.000000Z'
+                        updated_at: '2024-09-15T18:44:00.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/262'
+                    -
+                      type: task
+                      id: 279
+                      attributes:
+                        title: 'animi reiciendis'
+                        description: 'Sapiente molestiae necessitatibus vero corporis laborum ducimus. Architecto vel repellendus architecto dolore qui cumque earum aut.'
+                        status: P
+                        created_at: '2024-09-15T18:44:00.000000Z'
+                        updated_at: '2024-09-19T19:23:11.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/279'
+                    -
+                      type: task
+                      id: 280
+                      attributes:
+                        title: 'commodi non'
+                        description: 'Illo laborum ipsa repellendus sint ut totam non. Voluptatem asperiores magni unde enim alias nihil.'
+                        status: D
+                        created_at: '2024-09-15T18:44:00.000000Z'
+                        updated_at: '2024-09-15T18:44:00.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/280'
+                    -
+                      type: task
+                      id: 282
+                      attributes:
+                        title: 'nesciunt earum'
+                        description: 'Corrupti consequatur dolorem nemo.'
+                        status: P
+                        created_at: '2024-09-15T18:44:00.000000Z'
+                        updated_at: '2024-09-19T19:23:12.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/282'
+                    -
+                      type: task
+                      id: 299
+                      attributes:
+                        title: 'iusto est'
+                        description: 'Vitae corporis voluptas voluptatem in perspiciatis. Numquam quis eaque iure omnis ex.'
+                        status: P
+                        created_at: '2024-09-15T18:44:00.000000Z'
+                        updated_at: '2024-09-19T19:23:13.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/299'
+                    -
+                      type: task
+                      id: 300
+                      attributes:
+                        title: 'cumque deleniti'
+                        description: 'Nobis non odit est. Consequatur dolore debitis ad aspernatur laboriosam.'
+                        status: P
+                        created_at: '2024-09-15T18:44:00.000000Z'
+                        updated_at: '2024-09-19T19:23:14.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/300'
+                    -
+                      type: task
+                      id: 302
+                      attributes:
+                        title: 'autem omnis'
+                        description: 'Et aut illo saepe et illum non magni.'
+                        status: P
+                        created_at: '2024-09-15T18:44:00.000000Z'
+                        updated_at: '2024-09-15T18:44:00.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/302'
+                    -
+                      type: task
+                      id: 319
+                      attributes:
+                        title: 'corrupti omnis'
+                        description: 'Provident et et voluptatum nihil.'
+                        status: D
+                        created_at: '2024-09-15T18:44:01.000000Z'
+                        updated_at: '2024-09-15T18:44:01.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/319'
+                    -
+                      type: task
+                      id: 320
+                      attributes:
+                        title: 'est perferendis'
+                        description: 'Aut nam debitis atque necessitatibus nulla. Alias et quaerat molestiae neque provident.'
+                        status: P
+                        created_at: '2024-09-15T18:44:01.000000Z'
+                        updated_at: '2024-09-19T19:23:14.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/320'
+                    -
+                      type: task
+                      id: 322
+                      attributes:
+                        title: 'et sunt'
+                        description: 'Ut porro qui culpa ea aut a animi. Excepturi sunt ipsum facere quae sed.'
+                        status: P
+                        created_at: '2024-09-15T18:44:01.000000Z'
+                        updated_at: '2024-09-15T18:44:01.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/322'
+                    -
+                      type: task
+                      id: 339
+                      attributes:
+                        title: 'fugiat numquam'
+                        description: 'Sit aut sit a eligendi consequatur aut labore.'
+                        status: P
+                        created_at: '2024-09-15T18:44:01.000000Z'
+                        updated_at: '2024-09-15T18:44:01.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/339'
+                    -
+                      type: task
+                      id: 340
+                      attributes:
+                        title: 'dolores est'
+                        description: 'Molestiae autem error ipsa accusantium qui eveniet. Dolore eos iure velit quos.'
+                        status: P
+                        created_at: '2024-09-15T18:44:01.000000Z'
+                        updated_at: '2024-09-19T19:23:15.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/340'
+                    -
+                      type: task
+                      id: 342
+                      attributes:
+                        title: 'fugiat aut'
+                        description: 'Est aliquid voluptas voluptas nobis quos.'
+                        status: P
+                        created_at: '2024-09-15T18:44:01.000000Z'
+                        updated_at: '2024-09-15T18:44:01.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/342'
+                    -
+                      type: task
+                      id: 359
+                      attributes:
+                        title: 'mollitia iure'
+                        description: 'Id officia temporibus iusto illo pariatur consequatur id sit.'
+                        status: P
+                        created_at: '2024-09-15T18:44:02.000000Z'
+                        updated_at: '2024-09-15T18:44:02.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/359'
+                    -
+                      type: task
+                      id: 360
+                      attributes:
+                        title: 'sequi ut'
+                        description: 'Maxime vel laudantium omnis dolor ad magnam aut.'
+                        status: P
+                        created_at: '2024-09-15T18:44:02.000000Z'
+                        updated_at: '2024-09-15T18:44:02.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/360'
+                    -
+                      type: task
+                      id: 362
+                      attributes:
+                        title: 'molestias qui'
+                        description: 'Quia blanditiis eum fuga inventore esse quae aut.'
+                        status: P
+                        created_at: '2024-09-15T18:44:02.000000Z'
+                        updated_at: '2024-09-19T19:23:16.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/362'
+                    -
+                      type: task
+                      id: 379
+                      attributes:
+                        title: 'omnis est'
+                        description: 'Dolorum nesciunt eos nam ad perspiciatis.'
+                        status: D
+                        created_at: '2024-09-15T18:44:02.000000Z'
+                        updated_at: '2024-09-15T18:44:02.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/379'
+                    -
+                      type: task
+                      id: 380
+                      attributes:
+                        title: 'pariatur tempore'
+                        description: 'Sit voluptas enim qui et quia.'
+                        status: D
+                        created_at: '2024-09-15T18:44:02.000000Z'
+                        updated_at: '2024-09-15T18:44:02.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/380'
+                    -
+                      type: task
+                      id: 382
+                      attributes:
+                        title: 'suscipit vel'
+                        description: 'Dignissimos dolorem est itaque tempora aut laboriosam. Rerum beatae nihil recusandae sunt.'
+                        status: D
+                        created_at: '2024-09-15T18:44:02.000000Z'
+                        updated_at: '2024-09-15T18:44:02.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/382'
+                    -
+                      type: task
+                      id: 399
+                      attributes:
+                        title: 'quis sed'
+                        description: 'Optio cupiditate perspiciatis velit placeat. Ipsam ea non aut.'
+                        status: D
+                        created_at: '2024-09-15T18:44:03.000000Z'
+                        updated_at: '2024-09-15T18:44:03.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/399'
+                    -
+                      type: task
+                      id: 400
+                      attributes:
+                        title: 'et laborum'
+                        description: 'Autem ea neque rerum quaerat.'
+                        status: P
+                        created_at: '2024-09-15T18:44:03.000000Z'
+                        updated_at: '2024-09-15T18:44:03.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/400'
+                    -
+                      type: task
+                      id: 402
+                      attributes:
+                        title: 'laudantium officiis'
+                        description: 'Tempora provident natus incidunt esse cumque dicta.'
+                        status: P
+                        created_at: '2024-09-15T18:44:03.000000Z'
+                        updated_at: '2024-09-15T18:44:03.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/402'
+                    -
+                      type: task
+                      id: 419
+                      attributes:
+                        title: 'aut velit'
+                        description: 'Odit quos magnam autem sequi tempora aut.'
+                        status: P
+                        created_at: '2024-09-15T18:44:03.000000Z'
+                        updated_at: '2024-09-15T18:44:03.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/419'
+                    -
+                      type: task
+                      id: 420
+                      attributes:
+                        title: 'et modi'
+                        description: 'Maxime et voluptatem veniam quidem sunt non veniam.'
+                        status: D
+                        created_at: '2024-09-15T18:44:03.000000Z'
+                        updated_at: '2024-09-15T18:44:03.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/420'
+                    -
+                      type: task
+                      id: 422
+                      attributes:
+                        title: 'rerum sint'
+                        description: 'Sed dolorem deserunt vero pariatur dolorum sit accusamus.'
+                        status: D
+                        created_at: '2024-09-15T18:44:03.000000Z'
+                        updated_at: '2024-09-15T18:44:03.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/422'
+                    -
+                      type: task
+                      id: 439
+                      attributes:
+                        title: 'necessitatibus voluptates'
+                        description: 'Recusandae vero asperiores animi. Aut illum quia incidunt eius.'
+                        status: D
+                        created_at: '2024-09-15T18:44:03.000000Z'
+                        updated_at: '2024-09-15T18:44:03.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/439'
+                    -
+                      type: task
+                      id: 440
+                      attributes:
+                        title: 'et eum'
+                        description: 'Velit ipsum rerum nisi. Molestiae ea cumque in quibusdam eius dolor voluptas voluptatem.'
+                        status: D
+                        created_at: '2024-09-15T18:44:03.000000Z'
+                        updated_at: '2024-09-15T18:44:03.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/440'
+                    -
+                      type: task
+                      id: 442
+                      attributes:
+                        title: 'quo aut'
+                        description: 'Tempore sint est necessitatibus similique. Quia dolorum modi vel cumque id.'
+                        status: P
+                        created_at: '2024-09-15T18:44:03.000000Z'
+                        updated_at: '2024-09-19T19:23:17.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/442'
+                    -
+                      type: task
+                      id: 459
+                      attributes:
+                        title: 'ipsam possimus'
+                        description: 'Quia eos aspernatur minus iusto. Nostrum iusto enim illum error optio qui aut.'
+                        status: D
+                        created_at: '2024-09-15T18:44:04.000000Z'
+                        updated_at: '2024-09-15T18:44:04.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/459'
+                    -
+                      type: task
+                      id: 460
+                      attributes:
+                        title: 'et eaque'
+                        description: 'Deserunt deserunt eum voluptates ut praesentium similique facere.'
+                        status: D
+                        created_at: '2024-09-15T18:44:04.000000Z'
+                        updated_at: '2024-09-15T18:44:04.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/460'
+                    -
+                      type: task
+                      id: 462
+                      attributes:
+                        title: 'ipsum et'
+                        description: 'Et et et ipsam ullam consequatur numquam. Magni incidunt molestiae soluta odio maiores culpa sed.'
+                        status: P
+                        created_at: '2024-09-15T18:44:04.000000Z'
+                        updated_at: '2024-09-19T19:23:17.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/462'
+                    -
+                      type: task
+                      id: 479
+                      attributes:
+                        title: 'veritatis veritatis'
+                        description: 'Doloremque sed placeat aut iste nisi.'
+                        status: P
+                        created_at: '2024-09-15T18:44:04.000000Z'
+                        updated_at: '2024-09-15T18:44:04.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/479'
+                    -
+                      type: task
+                      id: 480
+                      attributes:
+                        title: 'dolores beatae'
+                        description: 'Facilis aliquam aut tenetur doloribus quis pariatur. Temporibus alias tempore repudiandae sunt et est beatae.'
+                        status: P
+                        created_at: '2024-09-15T18:44:04.000000Z'
+                        updated_at: '2024-09-15T18:44:04.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/480'
+                    -
+                      type: task
+                      id: 482
+                      attributes:
+                        title: 'sit fuga'
+                        description: 'Sint quibusdam voluptas distinctio quia. Facere esse voluptas voluptatem aut.'
+                        status: P
+                        created_at: '2024-09-15T18:44:04.000000Z'
+                        updated_at: '2024-09-19T19:23:18.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/482'
+                    -
+                      type: task
+                      id: 499
+                      attributes:
+                        title: 'rerum possimus'
+                        description: 'Est nemo nihil rerum vero nemo voluptatum iusto.'
+                        status: P
+                        created_at: '2024-09-15T18:44:05.000000Z'
+                        updated_at: '2024-09-15T18:44:05.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/499'
+                    -
+                      type: task
+                      id: 500
+                      attributes:
+                        title: 'aut officiis'
+                        description: 'Est aut blanditiis sed voluptas quia.'
+                        status: P
+                        created_at: '2024-09-15T18:44:05.000000Z'
+                        updated_at: '2024-09-15T18:44:05.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/500'
+                    -
+                      type: task
+                      id: 502
+                      attributes:
+                        title: 'est possimus'
+                        description: 'Placeat mollitia nihil consequatur esse dignissimos quod ullam sit. Sunt et aut voluptas.'
+                        status: P
+                        created_at: '2024-09-15T18:44:05.000000Z'
+                        updated_at: '2024-09-19T19:23:19.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/502'
+                    -
+                      type: task
+                      id: 519
+                      attributes:
+                        title: 'voluptas rerum'
+                        description: 'Rerum temporibus voluptatem sequi rerum quibusdam iusto. Velit laboriosam sint nisi debitis.'
+                        status: P
+                        created_at: '2024-09-15T18:44:05.000000Z'
+                        updated_at: '2024-09-15T18:44:05.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/519'
+                    -
+                      type: task
+                      id: 520
+                      attributes:
+                        title: 'est hic'
+                        description: 'Dolorem quis reprehenderit sed tenetur nisi.'
+                        status: P
+                        created_at: '2024-09-15T18:44:05.000000Z'
+                        updated_at: '2024-09-19T19:23:19.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/520'
+                    -
+                      type: task
+                      id: 522
+                      attributes:
+                        title: 'beatae voluptatum'
+                        description: 'Eveniet voluptate nostrum quisquam ut unde velit officiis laudantium.'
+                        status: P
+                        created_at: '2024-09-15T18:44:05.000000Z'
+                        updated_at: '2024-09-15T18:44:05.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/522'
+                    -
+                      type: task
+                      id: 539
+                      attributes:
+                        title: 'unde amet'
+                        description: 'Et occaecati pariatur et optio iusto. Laudantium adipisci eligendi laboriosam quia recusandae.'
+                        status: P
+                        created_at: '2024-09-15T18:44:06.000000Z'
+                        updated_at: '2024-09-19T19:23:20.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/539'
+                    -
+                      type: task
+                      id: 540
+                      attributes:
+                        title: 'reiciendis eius'
+                        description: 'Repudiandae inventore quaerat ut odio voluptate aliquam. Dicta repellendus voluptate deleniti voluptas doloribus autem aut.'
+                        status: P
+                        created_at: '2024-09-15T18:44:06.000000Z'
+                        updated_at: '2024-09-15T18:44:06.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/540'
+                    -
+                      type: task
+                      id: 542
+                      attributes:
+                        title: 'corrupti omnis'
+                        description: 'Ex officia molestiae aut omnis.'
+                        status: D
+                        created_at: '2024-09-15T18:44:06.000000Z'
+                        updated_at: '2024-09-15T18:44:06.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/542'
+                    -
+                      type: task
+                      id: 559
+                      attributes:
+                        title: 'ut impedit'
+                        description: 'At accusantium est consequatur qui dolorum omnis nesciunt consequatur. Esse aut et illo et non.'
+                        status: P
+                        created_at: '2024-09-15T18:44:06.000000Z'
+                        updated_at: '2024-09-15T18:44:06.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/559'
+                    -
+                      type: task
+                      id: 560
+                      attributes:
+                        title: 'quam dolorem'
+                        description: 'Maiores quis incidunt sequi eum optio rerum perspiciatis. Laudantium debitis libero quia recusandae facere.'
+                        status: P
+                        created_at: '2024-09-15T18:44:06.000000Z'
+                        updated_at: '2024-09-15T18:44:06.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/560'
+                    -
+                      type: task
+                      id: 562
+                      attributes:
+                        title: 'laborum cumque'
+                        description: 'Placeat quo commodi voluptatibus explicabo rerum itaque quaerat.'
+                        status: P
+                        created_at: '2024-09-15T18:44:06.000000Z'
+                        updated_at: '2024-09-19T19:16:52.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/562'
+                    -
+                      type: task
+                      id: 579
+                      attributes:
+                        title: 'amet consequatur'
+                        description: 'Mollitia quidem voluptatem quia cum.'
+                        status: P
+                        created_at: '2024-09-15T18:44:06.000000Z'
+                        updated_at: '2024-09-15T18:44:06.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/579'
+                    -
+                      type: task
+                      id: 580
+                      attributes:
+                        title: 'quisquam culpa'
+                        description: 'Et rerum non voluptatem debitis neque nisi nostrum. Velit ut error fugiat vero cumque ipsa quis.'
+                        status: P
+                        created_at: '2024-09-15T18:44:06.000000Z'
+                        updated_at: '2024-09-15T18:44:06.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/580'
+                    -
+                      type: task
+                      id: 582
+                      attributes:
+                        title: 'vel nemo'
+                        description: 'Sunt sed animi sit porro illum libero.'
+                        status: P
+                        created_at: '2024-09-15T18:44:06.000000Z'
+                        updated_at: '2024-09-15T18:44:06.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/582'
+                    -
+                      type: task
+                      id: 599
+                      attributes:
+                        title: 'sit sunt'
+                        description: 'Quaerat aut dolorem temporibus pariatur molestiae. Facilis minima dolorem rerum non nostrum voluptate hic.'
+                        status: P
+                        created_at: '2024-09-15T18:44:07.000000Z'
+                        updated_at: '2024-09-19T19:23:21.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 19
+                      links:
+                        self: 'http://localhost/api/v1/tasks/599'
+                    -
+                      type: task
+                      id: 600
+                      attributes:
+                        title: 'autem qui'
+                        description: 'Suscipit exercitationem quis velit et. Tempore nesciunt esse nulla.'
+                        status: P
+                        created_at: '2024-09-15T18:44:07.000000Z'
+                        updated_at: '2024-09-15T18:44:07.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 20
+                      links:
+                        self: 'http://localhost/api/v1/tasks/600'
+                    -
+                      type: task
+                      id: 601
+                      attributes:
+                        title: Test
+                        description: null
+                        status: P
+                        created_at: '2024-09-19T03:50:23.000000Z'
+                        updated_at: '2024-09-19T19:54:23.000000Z'
+                      relationships:
+                        user:
+                          data:
+                            type: user
+                            id: 1
+                        category:
+                          data:
+                            type: category
+                            id: 2
+                      links:
+                        self: 'http://localhost/api/v1/tasks/601'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        type: task
+                        id: 2
+                        attributes:
+                          title: 'numquam et'
+                          description: 'Id aut aliquam porro.'
+                          status: C
+                          created_at: '2024-09-15T18:43:54.000000Z'
+                          updated_at: '2024-09-19T19:53:37.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/2'
+                      -
+                        type: task
+                        id: 19
+                        attributes:
+                          title: 'sapiente vel'
+                          description: 'Voluptate voluptas ut occaecati et. Ullam sed facilis maxime quo omnis nihil ea.'
+                          status: C
+                          created_at: '2024-09-15T18:43:54.000000Z'
+                          updated_at: '2024-09-19T19:53:44.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/19'
+                      -
+                        type: task
+                        id: 20
+                        attributes:
+                          title: 'aut omnis'
+                          description: 'Aut omnis voluptatibus nisi. Vel culpa iusto atque perferendis.'
+                          status: C
+                          created_at: '2024-09-15T18:43:54.000000Z'
+                          updated_at: '2024-09-19T19:53:58.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/20'
+                      -
+                        type: task
+                        id: 22
+                        attributes:
+                          title: 'commodi non'
+                          description: 'Est quas et et provident quibusdam. Sed rem quibusdam qui aut adipisci.'
+                          status: P
+                          created_at: '2024-09-15T18:43:54.000000Z'
+                          updated_at: '2024-09-19T03:49:55.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/22'
+                      -
+                        type: task
+                        id: 39
+                        attributes:
+                          title: 'et omnis'
+                          description: 'Corporis harum aut dignissimos officia sequi reiciendis molestiae. Hic natus ex et qui repudiandae quos quaerat.'
+                          status: P
+                          created_at: '2024-09-15T18:43:55.000000Z'
+                          updated_at: '2024-09-19T19:22:59.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/39'
+                      -
+                        type: task
+                        id: 40
+                        attributes:
+                          title: 'sint omnis'
+                          description: 'Aperiam qui debitis quidem eaque eveniet dolore accusantium. Non exercitationem temporibus quisquam.'
+                          status: D
+                          created_at: '2024-09-15T18:43:55.000000Z'
+                          updated_at: '2024-09-15T18:43:55.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/40'
+                      -
+                        type: task
+                        id: 42
+                        attributes:
+                          title: 'aperiam alias'
+                          description: 'Placeat quaerat aut veritatis quaerat beatae ex error.'
+                          status: D
+                          created_at: '2024-09-15T18:43:55.000000Z'
+                          updated_at: '2024-09-15T18:43:55.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/42'
+                      -
+                        type: task
+                        id: 59
+                        attributes:
+                          title: 'molestias aut'
+                          description: 'Reiciendis quam aut aliquam explicabo laboriosam. Officia quam aspernatur et iste id neque accusantium.'
+                          status: P
+                          created_at: '2024-09-15T18:43:55.000000Z'
+                          updated_at: '2024-09-19T19:23:00.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/59'
+                      -
+                        type: task
+                        id: 60
+                        attributes:
+                          title: 'autem quod'
+                          description: 'Quas facere blanditiis consequatur optio et hic.'
+                          status: P
+                          created_at: '2024-09-15T18:43:55.000000Z'
+                          updated_at: '2024-09-15T18:43:55.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/60'
+                      -
+                        type: task
+                        id: 62
+                        attributes:
+                          title: 'ut eius'
+                          description: 'Ut dolor eos quasi sunt odit et perferendis.'
+                          status: D
+                          created_at: '2024-09-15T18:43:55.000000Z'
+                          updated_at: '2024-09-15T18:43:55.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/62'
+                      -
+                        type: task
+                        id: 79
+                        attributes:
+                          title: 'et repellat'
+                          description: 'Consequuntur saepe minima aut ut consectetur quae aspernatur quaerat.'
+                          status: P
+                          created_at: '2024-09-15T18:43:56.000000Z'
+                          updated_at: '2024-09-19T19:23:01.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/79'
+                      -
+                        type: task
+                        id: 80
+                        attributes:
+                          title: 'qui in'
+                          description: 'Exercitationem aut reiciendis libero laudantium quaerat culpa distinctio. Repellendus ipsam eos itaque possimus aliquam id itaque.'
+                          status: C
+                          created_at: '2024-09-15T18:43:56.000000Z'
+                          updated_at: '2024-09-19T19:23:30.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/80'
+                      -
+                        type: task
+                        id: 82
+                        attributes:
+                          title: 'ipsum velit'
+                          description: 'Nobis aliquam magni facilis est exercitationem.'
+                          status: P
+                          created_at: '2024-09-15T18:43:56.000000Z'
+                          updated_at: '2024-09-19T19:23:03.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/82'
+                      -
+                        type: task
+                        id: 99
+                        attributes:
+                          title: 'a vel'
+                          description: 'In omnis blanditiis autem ratione. Asperiores facere at tenetur consequatur.'
+                          status: P
+                          created_at: '2024-09-15T18:43:56.000000Z'
+                          updated_at: '2024-09-19T19:23:04.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/99'
+                      -
+                        type: task
+                        id: 100
+                        attributes:
+                          title: 'sit explicabo'
+                          description: 'Est tempore mollitia tempora quidem eos provident quia ullam.'
+                          status: D
+                          created_at: '2024-09-15T18:43:56.000000Z'
+                          updated_at: '2024-09-15T18:43:56.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/100'
+                      -
+                        type: task
+                        id: 102
+                        attributes:
+                          title: 'accusantium corrupti'
+                          description: 'Exercitationem qui magnam beatae. Repellat cum debitis qui commodi voluptas quia est.'
+                          status: P
+                          created_at: '2024-09-15T18:43:56.000000Z'
+                          updated_at: '2024-09-19T19:23:04.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/102'
+                      -
+                        type: task
+                        id: 119
+                        attributes:
+                          title: 'esse soluta'
+                          description: 'Nihil alias molestiae quasi mollitia qui. Quaerat aut repellat impedit et.'
+                          status: P
+                          created_at: '2024-09-15T18:43:56.000000Z'
+                          updated_at: '2024-09-19T19:23:05.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/119'
+                      -
+                        type: task
+                        id: 120
+                        attributes:
+                          title: 'eum neque'
+                          description: 'Numquam optio nobis perferendis modi.'
+                          status: P
+                          created_at: '2024-09-15T18:43:56.000000Z'
+                          updated_at: '2024-09-19T19:23:06.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/120'
+                      -
+                        type: task
+                        id: 122
+                        attributes:
+                          title: 'ut asperiores'
+                          description: 'Minima qui accusamus similique quis officia voluptas nihil. Reprehenderit commodi velit voluptatem corrupti maxime ut.'
+                          status: P
+                          created_at: '2024-09-15T18:43:56.000000Z'
+                          updated_at: '2024-09-15T18:43:56.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/122'
+                      -
+                        type: task
+                        id: 139
+                        attributes:
+                          title: 'consequuntur enim'
+                          description: 'Quia recusandae voluptatibus impedit dolorem velit ut.'
+                          status: P
+                          created_at: '2024-09-15T18:43:57.000000Z'
+                          updated_at: '2024-09-19T19:23:07.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/139'
+                      -
+                        type: task
+                        id: 140
+                        attributes:
+                          title: 'eaque ut'
+                          description: 'Provident hic velit nihil omnis quos eveniet.'
+                          status: P
+                          created_at: '2024-09-15T18:43:57.000000Z'
+                          updated_at: '2024-09-19T19:23:08.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/140'
+                      -
+                        type: task
+                        id: 142
+                        attributes:
+                          title: 'et recusandae'
+                          description: 'Non temporibus atque recusandae nihil. Hic minus aut eos ratione omnis dolore laudantium sed.'
+                          status: P
+                          created_at: '2024-09-15T18:43:57.000000Z'
+                          updated_at: '2024-09-15T18:43:57.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/142'
+                      -
+                        type: task
+                        id: 159
+                        attributes:
+                          title: 'non non'
+                          description: 'Ea est sequi neque vitae voluptas at consequatur. Nemo officiis qui atque eos quibusdam ad alias.'
+                          status: P
+                          created_at: '2024-09-15T18:43:57.000000Z'
+                          updated_at: '2024-09-19T19:23:08.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/159'
+                      -
+                        type: task
+                        id: 160
+                        attributes:
+                          title: 'adipisci temporibus'
+                          description: 'Est debitis quia possimus dolorem rerum. Corporis veniam ut molestias velit corrupti.'
+                          status: D
+                          created_at: '2024-09-15T18:43:57.000000Z'
+                          updated_at: '2024-09-15T18:43:57.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/160'
+                      -
+                        type: task
+                        id: 162
+                        attributes:
+                          title: 'minus perferendis'
+                          description: 'Id ab cumque est aut sed.'
+                          status: D
+                          created_at: '2024-09-15T18:43:57.000000Z'
+                          updated_at: '2024-09-15T18:43:57.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/162'
+                      -
+                        type: task
+                        id: 179
+                        attributes:
+                          title: 'voluptatum modi'
+                          description: 'Eum perferendis facere laudantium possimus repudiandae et qui. Fuga ut aut est rem omnis earum.'
+                          status: D
+                          created_at: '2024-09-15T18:43:58.000000Z'
+                          updated_at: '2024-09-15T18:43:58.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/179'
+                      -
+                        type: task
+                        id: 180
+                        attributes:
+                          title: 'quod perspiciatis'
+                          description: 'Temporibus facilis ut et reprehenderit vel.'
+                          status: P
+                          created_at: '2024-09-15T18:43:58.000000Z'
+                          updated_at: '2024-09-15T18:43:58.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/180'
+                      -
+                        type: task
+                        id: 182
+                        attributes:
+                          title: 'quas soluta'
+                          description: 'Fuga eum veritatis consequatur eum tempore quaerat ipsa.'
+                          status: P
+                          created_at: '2024-09-15T18:43:58.000000Z'
+                          updated_at: '2024-09-15T18:43:58.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/182'
+                      -
+                        type: task
+                        id: 199
+                        attributes:
+                          title: 'sapiente voluptatem'
+                          description: 'Et sint sint doloribus rerum.'
+                          status: D
+                          created_at: '2024-09-15T18:43:58.000000Z'
+                          updated_at: '2024-09-15T18:43:58.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/199'
+                      -
+                        type: task
+                        id: 200
+                        attributes:
+                          title: 'dolore aspernatur'
+                          description: 'Iste quasi enim soluta ut recusandae. Deleniti ea qui praesentium.'
+                          status: P
+                          created_at: '2024-09-15T18:43:58.000000Z'
+                          updated_at: '2024-09-19T19:23:09.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/200'
+                      -
+                        type: task
+                        id: 202
+                        attributes:
+                          title: 'et aut'
+                          description: 'Cum ipsa accusamus voluptatem quidem minus soluta. Fugit ipsam qui temporibus vel.'
+                          status: P
+                          created_at: '2024-09-15T18:43:58.000000Z'
+                          updated_at: '2024-09-19T19:23:10.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/202'
+                      -
+                        type: task
+                        id: 219
+                        attributes:
+                          title: 'natus cum'
+                          description: 'Reiciendis eveniet eligendi placeat atque nostrum aut asperiores illum. Qui nulla aliquid dignissimos reiciendis.'
+                          status: P
+                          created_at: '2024-09-15T18:43:59.000000Z'
+                          updated_at: '2024-09-19T19:23:11.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/219'
+                      -
+                        type: task
+                        id: 220
+                        attributes:
+                          title: 'eaque quos'
+                          description: 'Quasi natus optio quidem officiis eveniet magni ducimus.'
+                          status: P
+                          created_at: '2024-09-15T18:43:59.000000Z'
+                          updated_at: '2024-09-19T19:23:12.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/220'
+                      -
+                        type: task
+                        id: 222
+                        attributes:
+                          title: 'quia ducimus'
+                          description: 'Veniam provident veniam eaque. Corrupti rem adipisci rerum suscipit quidem sapiente enim.'
+                          status: P
+                          created_at: '2024-09-15T18:43:59.000000Z'
+                          updated_at: '2024-09-15T18:43:59.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/222'
+                      -
+                        type: task
+                        id: 239
+                        attributes:
+                          title: 'asperiores laborum'
+                          description: 'Dolor ut nam ex dolor voluptas quisquam voluptatibus optio.'
+                          status: P
+                          created_at: '2024-09-15T18:43:59.000000Z'
+                          updated_at: '2024-09-19T19:23:12.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/239'
+                      -
+                        type: task
+                        id: 240
+                        attributes:
+                          title: 'natus minus'
+                          description: 'Et assumenda architecto consequatur voluptate ut qui quibusdam similique. Atque facere provident aliquid natus iure blanditiis ipsam aut.'
+                          status: D
+                          created_at: '2024-09-15T18:43:59.000000Z'
+                          updated_at: '2024-09-15T18:43:59.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/240'
+                      -
+                        type: task
+                        id: 242
+                        attributes:
+                          title: 'eum ullam'
+                          description: 'Aut officiis placeat voluptatem aut esse.'
+                          status: P
+                          created_at: '2024-09-15T18:43:59.000000Z'
+                          updated_at: '2024-09-15T18:43:59.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/242'
+                      -
+                        type: task
+                        id: 259
+                        attributes:
+                          title: 'facere quos'
+                          description: 'Aspernatur aut occaecati ut reprehenderit sit harum est. Numquam vitae inventore debitis.'
+                          status: P
+                          created_at: '2024-09-15T18:43:59.000000Z'
+                          updated_at: '2024-09-19T19:23:13.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/259'
+                      -
+                        type: task
+                        id: 260
+                        attributes:
+                          title: 'accusantium dolore'
+                          description: 'Nobis voluptatem qui perspiciatis ut. Adipisci animi voluptas voluptatibus voluptas cum non.'
+                          status: D
+                          created_at: '2024-09-15T18:43:59.000000Z'
+                          updated_at: '2024-09-15T18:43:59.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/260'
+                      -
+                        type: task
+                        id: 262
+                        attributes:
+                          title: 'amet nostrum'
+                          description: 'Expedita est odio aut debitis sunt dolores.'
+                          status: D
+                          created_at: '2024-09-15T18:44:00.000000Z'
+                          updated_at: '2024-09-15T18:44:00.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/262'
+                      -
+                        type: task
+                        id: 279
+                        attributes:
+                          title: 'animi reiciendis'
+                          description: 'Sapiente molestiae necessitatibus vero corporis laborum ducimus. Architecto vel repellendus architecto dolore qui cumque earum aut.'
+                          status: P
+                          created_at: '2024-09-15T18:44:00.000000Z'
+                          updated_at: '2024-09-19T19:23:11.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/279'
+                      -
+                        type: task
+                        id: 280
+                        attributes:
+                          title: 'commodi non'
+                          description: 'Illo laborum ipsa repellendus sint ut totam non. Voluptatem asperiores magni unde enim alias nihil.'
+                          status: D
+                          created_at: '2024-09-15T18:44:00.000000Z'
+                          updated_at: '2024-09-15T18:44:00.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/280'
+                      -
+                        type: task
+                        id: 282
+                        attributes:
+                          title: 'nesciunt earum'
+                          description: 'Corrupti consequatur dolorem nemo.'
+                          status: P
+                          created_at: '2024-09-15T18:44:00.000000Z'
+                          updated_at: '2024-09-19T19:23:12.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/282'
+                      -
+                        type: task
+                        id: 299
+                        attributes:
+                          title: 'iusto est'
+                          description: 'Vitae corporis voluptas voluptatem in perspiciatis. Numquam quis eaque iure omnis ex.'
+                          status: P
+                          created_at: '2024-09-15T18:44:00.000000Z'
+                          updated_at: '2024-09-19T19:23:13.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/299'
+                      -
+                        type: task
+                        id: 300
+                        attributes:
+                          title: 'cumque deleniti'
+                          description: 'Nobis non odit est. Consequatur dolore debitis ad aspernatur laboriosam.'
+                          status: P
+                          created_at: '2024-09-15T18:44:00.000000Z'
+                          updated_at: '2024-09-19T19:23:14.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/300'
+                      -
+                        type: task
+                        id: 302
+                        attributes:
+                          title: 'autem omnis'
+                          description: 'Et aut illo saepe et illum non magni.'
+                          status: P
+                          created_at: '2024-09-15T18:44:00.000000Z'
+                          updated_at: '2024-09-15T18:44:00.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/302'
+                      -
+                        type: task
+                        id: 319
+                        attributes:
+                          title: 'corrupti omnis'
+                          description: 'Provident et et voluptatum nihil.'
+                          status: D
+                          created_at: '2024-09-15T18:44:01.000000Z'
+                          updated_at: '2024-09-15T18:44:01.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/319'
+                      -
+                        type: task
+                        id: 320
+                        attributes:
+                          title: 'est perferendis'
+                          description: 'Aut nam debitis atque necessitatibus nulla. Alias et quaerat molestiae neque provident.'
+                          status: P
+                          created_at: '2024-09-15T18:44:01.000000Z'
+                          updated_at: '2024-09-19T19:23:14.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/320'
+                      -
+                        type: task
+                        id: 322
+                        attributes:
+                          title: 'et sunt'
+                          description: 'Ut porro qui culpa ea aut a animi. Excepturi sunt ipsum facere quae sed.'
+                          status: P
+                          created_at: '2024-09-15T18:44:01.000000Z'
+                          updated_at: '2024-09-15T18:44:01.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/322'
+                      -
+                        type: task
+                        id: 339
+                        attributes:
+                          title: 'fugiat numquam'
+                          description: 'Sit aut sit a eligendi consequatur aut labore.'
+                          status: P
+                          created_at: '2024-09-15T18:44:01.000000Z'
+                          updated_at: '2024-09-15T18:44:01.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/339'
+                      -
+                        type: task
+                        id: 340
+                        attributes:
+                          title: 'dolores est'
+                          description: 'Molestiae autem error ipsa accusantium qui eveniet. Dolore eos iure velit quos.'
+                          status: P
+                          created_at: '2024-09-15T18:44:01.000000Z'
+                          updated_at: '2024-09-19T19:23:15.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/340'
+                      -
+                        type: task
+                        id: 342
+                        attributes:
+                          title: 'fugiat aut'
+                          description: 'Est aliquid voluptas voluptas nobis quos.'
+                          status: P
+                          created_at: '2024-09-15T18:44:01.000000Z'
+                          updated_at: '2024-09-15T18:44:01.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/342'
+                      -
+                        type: task
+                        id: 359
+                        attributes:
+                          title: 'mollitia iure'
+                          description: 'Id officia temporibus iusto illo pariatur consequatur id sit.'
+                          status: P
+                          created_at: '2024-09-15T18:44:02.000000Z'
+                          updated_at: '2024-09-15T18:44:02.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/359'
+                      -
+                        type: task
+                        id: 360
+                        attributes:
+                          title: 'sequi ut'
+                          description: 'Maxime vel laudantium omnis dolor ad magnam aut.'
+                          status: P
+                          created_at: '2024-09-15T18:44:02.000000Z'
+                          updated_at: '2024-09-15T18:44:02.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/360'
+                      -
+                        type: task
+                        id: 362
+                        attributes:
+                          title: 'molestias qui'
+                          description: 'Quia blanditiis eum fuga inventore esse quae aut.'
+                          status: P
+                          created_at: '2024-09-15T18:44:02.000000Z'
+                          updated_at: '2024-09-19T19:23:16.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/362'
+                      -
+                        type: task
+                        id: 379
+                        attributes:
+                          title: 'omnis est'
+                          description: 'Dolorum nesciunt eos nam ad perspiciatis.'
+                          status: D
+                          created_at: '2024-09-15T18:44:02.000000Z'
+                          updated_at: '2024-09-15T18:44:02.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/379'
+                      -
+                        type: task
+                        id: 380
+                        attributes:
+                          title: 'pariatur tempore'
+                          description: 'Sit voluptas enim qui et quia.'
+                          status: D
+                          created_at: '2024-09-15T18:44:02.000000Z'
+                          updated_at: '2024-09-15T18:44:02.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/380'
+                      -
+                        type: task
+                        id: 382
+                        attributes:
+                          title: 'suscipit vel'
+                          description: 'Dignissimos dolorem est itaque tempora aut laboriosam. Rerum beatae nihil recusandae sunt.'
+                          status: D
+                          created_at: '2024-09-15T18:44:02.000000Z'
+                          updated_at: '2024-09-15T18:44:02.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/382'
+                      -
+                        type: task
+                        id: 399
+                        attributes:
+                          title: 'quis sed'
+                          description: 'Optio cupiditate perspiciatis velit placeat. Ipsam ea non aut.'
+                          status: D
+                          created_at: '2024-09-15T18:44:03.000000Z'
+                          updated_at: '2024-09-15T18:44:03.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/399'
+                      -
+                        type: task
+                        id: 400
+                        attributes:
+                          title: 'et laborum'
+                          description: 'Autem ea neque rerum quaerat.'
+                          status: P
+                          created_at: '2024-09-15T18:44:03.000000Z'
+                          updated_at: '2024-09-15T18:44:03.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/400'
+                      -
+                        type: task
+                        id: 402
+                        attributes:
+                          title: 'laudantium officiis'
+                          description: 'Tempora provident natus incidunt esse cumque dicta.'
+                          status: P
+                          created_at: '2024-09-15T18:44:03.000000Z'
+                          updated_at: '2024-09-15T18:44:03.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/402'
+                      -
+                        type: task
+                        id: 419
+                        attributes:
+                          title: 'aut velit'
+                          description: 'Odit quos magnam autem sequi tempora aut.'
+                          status: P
+                          created_at: '2024-09-15T18:44:03.000000Z'
+                          updated_at: '2024-09-15T18:44:03.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/419'
+                      -
+                        type: task
+                        id: 420
+                        attributes:
+                          title: 'et modi'
+                          description: 'Maxime et voluptatem veniam quidem sunt non veniam.'
+                          status: D
+                          created_at: '2024-09-15T18:44:03.000000Z'
+                          updated_at: '2024-09-15T18:44:03.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/420'
+                      -
+                        type: task
+                        id: 422
+                        attributes:
+                          title: 'rerum sint'
+                          description: 'Sed dolorem deserunt vero pariatur dolorum sit accusamus.'
+                          status: D
+                          created_at: '2024-09-15T18:44:03.000000Z'
+                          updated_at: '2024-09-15T18:44:03.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/422'
+                      -
+                        type: task
+                        id: 439
+                        attributes:
+                          title: 'necessitatibus voluptates'
+                          description: 'Recusandae vero asperiores animi. Aut illum quia incidunt eius.'
+                          status: D
+                          created_at: '2024-09-15T18:44:03.000000Z'
+                          updated_at: '2024-09-15T18:44:03.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/439'
+                      -
+                        type: task
+                        id: 440
+                        attributes:
+                          title: 'et eum'
+                          description: 'Velit ipsum rerum nisi. Molestiae ea cumque in quibusdam eius dolor voluptas voluptatem.'
+                          status: D
+                          created_at: '2024-09-15T18:44:03.000000Z'
+                          updated_at: '2024-09-15T18:44:03.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/440'
+                      -
+                        type: task
+                        id: 442
+                        attributes:
+                          title: 'quo aut'
+                          description: 'Tempore sint est necessitatibus similique. Quia dolorum modi vel cumque id.'
+                          status: P
+                          created_at: '2024-09-15T18:44:03.000000Z'
+                          updated_at: '2024-09-19T19:23:17.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/442'
+                      -
+                        type: task
+                        id: 459
+                        attributes:
+                          title: 'ipsam possimus'
+                          description: 'Quia eos aspernatur minus iusto. Nostrum iusto enim illum error optio qui aut.'
+                          status: D
+                          created_at: '2024-09-15T18:44:04.000000Z'
+                          updated_at: '2024-09-15T18:44:04.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/459'
+                      -
+                        type: task
+                        id: 460
+                        attributes:
+                          title: 'et eaque'
+                          description: 'Deserunt deserunt eum voluptates ut praesentium similique facere.'
+                          status: D
+                          created_at: '2024-09-15T18:44:04.000000Z'
+                          updated_at: '2024-09-15T18:44:04.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/460'
+                      -
+                        type: task
+                        id: 462
+                        attributes:
+                          title: 'ipsum et'
+                          description: 'Et et et ipsam ullam consequatur numquam. Magni incidunt molestiae soluta odio maiores culpa sed.'
+                          status: P
+                          created_at: '2024-09-15T18:44:04.000000Z'
+                          updated_at: '2024-09-19T19:23:17.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/462'
+                      -
+                        type: task
+                        id: 479
+                        attributes:
+                          title: 'veritatis veritatis'
+                          description: 'Doloremque sed placeat aut iste nisi.'
+                          status: P
+                          created_at: '2024-09-15T18:44:04.000000Z'
+                          updated_at: '2024-09-15T18:44:04.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/479'
+                      -
+                        type: task
+                        id: 480
+                        attributes:
+                          title: 'dolores beatae'
+                          description: 'Facilis aliquam aut tenetur doloribus quis pariatur. Temporibus alias tempore repudiandae sunt et est beatae.'
+                          status: P
+                          created_at: '2024-09-15T18:44:04.000000Z'
+                          updated_at: '2024-09-15T18:44:04.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/480'
+                      -
+                        type: task
+                        id: 482
+                        attributes:
+                          title: 'sit fuga'
+                          description: 'Sint quibusdam voluptas distinctio quia. Facere esse voluptas voluptatem aut.'
+                          status: P
+                          created_at: '2024-09-15T18:44:04.000000Z'
+                          updated_at: '2024-09-19T19:23:18.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/482'
+                      -
+                        type: task
+                        id: 499
+                        attributes:
+                          title: 'rerum possimus'
+                          description: 'Est nemo nihil rerum vero nemo voluptatum iusto.'
+                          status: P
+                          created_at: '2024-09-15T18:44:05.000000Z'
+                          updated_at: '2024-09-15T18:44:05.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/499'
+                      -
+                        type: task
+                        id: 500
+                        attributes:
+                          title: 'aut officiis'
+                          description: 'Est aut blanditiis sed voluptas quia.'
+                          status: P
+                          created_at: '2024-09-15T18:44:05.000000Z'
+                          updated_at: '2024-09-15T18:44:05.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/500'
+                      -
+                        type: task
+                        id: 502
+                        attributes:
+                          title: 'est possimus'
+                          description: 'Placeat mollitia nihil consequatur esse dignissimos quod ullam sit. Sunt et aut voluptas.'
+                          status: P
+                          created_at: '2024-09-15T18:44:05.000000Z'
+                          updated_at: '2024-09-19T19:23:19.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/502'
+                      -
+                        type: task
+                        id: 519
+                        attributes:
+                          title: 'voluptas rerum'
+                          description: 'Rerum temporibus voluptatem sequi rerum quibusdam iusto. Velit laboriosam sint nisi debitis.'
+                          status: P
+                          created_at: '2024-09-15T18:44:05.000000Z'
+                          updated_at: '2024-09-15T18:44:05.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/519'
+                      -
+                        type: task
+                        id: 520
+                        attributes:
+                          title: 'est hic'
+                          description: 'Dolorem quis reprehenderit sed tenetur nisi.'
+                          status: P
+                          created_at: '2024-09-15T18:44:05.000000Z'
+                          updated_at: '2024-09-19T19:23:19.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/520'
+                      -
+                        type: task
+                        id: 522
+                        attributes:
+                          title: 'beatae voluptatum'
+                          description: 'Eveniet voluptate nostrum quisquam ut unde velit officiis laudantium.'
+                          status: P
+                          created_at: '2024-09-15T18:44:05.000000Z'
+                          updated_at: '2024-09-15T18:44:05.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/522'
+                      -
+                        type: task
+                        id: 539
+                        attributes:
+                          title: 'unde amet'
+                          description: 'Et occaecati pariatur et optio iusto. Laudantium adipisci eligendi laboriosam quia recusandae.'
+                          status: P
+                          created_at: '2024-09-15T18:44:06.000000Z'
+                          updated_at: '2024-09-19T19:23:20.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/539'
+                      -
+                        type: task
+                        id: 540
+                        attributes:
+                          title: 'reiciendis eius'
+                          description: 'Repudiandae inventore quaerat ut odio voluptate aliquam. Dicta repellendus voluptate deleniti voluptas doloribus autem aut.'
+                          status: P
+                          created_at: '2024-09-15T18:44:06.000000Z'
+                          updated_at: '2024-09-15T18:44:06.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/540'
+                      -
+                        type: task
+                        id: 542
+                        attributes:
+                          title: 'corrupti omnis'
+                          description: 'Ex officia molestiae aut omnis.'
+                          status: D
+                          created_at: '2024-09-15T18:44:06.000000Z'
+                          updated_at: '2024-09-15T18:44:06.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/542'
+                      -
+                        type: task
+                        id: 559
+                        attributes:
+                          title: 'ut impedit'
+                          description: 'At accusantium est consequatur qui dolorum omnis nesciunt consequatur. Esse aut et illo et non.'
+                          status: P
+                          created_at: '2024-09-15T18:44:06.000000Z'
+                          updated_at: '2024-09-15T18:44:06.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/559'
+                      -
+                        type: task
+                        id: 560
+                        attributes:
+                          title: 'quam dolorem'
+                          description: 'Maiores quis incidunt sequi eum optio rerum perspiciatis. Laudantium debitis libero quia recusandae facere.'
+                          status: P
+                          created_at: '2024-09-15T18:44:06.000000Z'
+                          updated_at: '2024-09-15T18:44:06.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/560'
+                      -
+                        type: task
+                        id: 562
+                        attributes:
+                          title: 'laborum cumque'
+                          description: 'Placeat quo commodi voluptatibus explicabo rerum itaque quaerat.'
+                          status: P
+                          created_at: '2024-09-15T18:44:06.000000Z'
+                          updated_at: '2024-09-19T19:16:52.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/562'
+                      -
+                        type: task
+                        id: 579
+                        attributes:
+                          title: 'amet consequatur'
+                          description: 'Mollitia quidem voluptatem quia cum.'
+                          status: P
+                          created_at: '2024-09-15T18:44:06.000000Z'
+                          updated_at: '2024-09-15T18:44:06.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/579'
+                      -
+                        type: task
+                        id: 580
+                        attributes:
+                          title: 'quisquam culpa'
+                          description: 'Et rerum non voluptatem debitis neque nisi nostrum. Velit ut error fugiat vero cumque ipsa quis.'
+                          status: P
+                          created_at: '2024-09-15T18:44:06.000000Z'
+                          updated_at: '2024-09-15T18:44:06.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/580'
+                      -
+                        type: task
+                        id: 582
+                        attributes:
+                          title: 'vel nemo'
+                          description: 'Sunt sed animi sit porro illum libero.'
+                          status: P
+                          created_at: '2024-09-15T18:44:06.000000Z'
+                          updated_at: '2024-09-15T18:44:06.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/582'
+                      -
+                        type: task
+                        id: 599
+                        attributes:
+                          title: 'sit sunt'
+                          description: 'Quaerat aut dolorem temporibus pariatur molestiae. Facilis minima dolorem rerum non nostrum voluptate hic.'
+                          status: P
+                          created_at: '2024-09-15T18:44:07.000000Z'
+                          updated_at: '2024-09-19T19:23:21.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 19
+                        links:
+                          self: 'http://localhost/api/v1/tasks/599'
+                      -
+                        type: task
+                        id: 600
+                        attributes:
+                          title: 'autem qui'
+                          description: 'Suscipit exercitationem quis velit et. Tempore nesciunt esse nulla.'
+                          status: P
+                          created_at: '2024-09-15T18:44:07.000000Z'
+                          updated_at: '2024-09-15T18:44:07.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 20
+                        links:
+                          self: 'http://localhost/api/v1/tasks/600'
+                      -
+                        type: task
+                        id: 601
+                        attributes:
+                          title: Test
+                          description: null
+                          status: P
+                          created_at: '2024-09-19T03:50:23.000000Z'
+                          updated_at: '2024-09-19T19:54:23.000000Z'
+                        relationships:
+                          user:
+                            data:
+                              type: user
+                              id: 1
+                          category:
+                            data:
+                              type: category
+                              id: 2
+                        links:
+                          self: 'http://localhost/api/v1/tasks/601'
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: task
+                        id:
+                          type: integer
+                          example: 2
+                        attributes:
+                          type: object
+                          properties:
+                            title:
+                              type: string
+                              example: 'numquam et'
+                            description:
+                              type: string
+                              example: 'Id aut aliquam porro.'
+                            status:
+                              type: string
+                              example: C
+                            created_at:
+                              type: string
+                              example: '2024-09-15T18:43:54.000000Z'
+                            updated_at:
+                              type: string
+                              example: '2024-09-19T19:53:37.000000Z'
+                        relationships:
+                          type: object
+                          properties:
+                            user:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                      example: user
+                                    id:
+                                      type: integer
+                                      example: 1
+                            category:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                      example: category
+                                    id:
+                                      type: integer
+                                      example: 2
+                        links:
+                          type: object
+                          properties:
+                            self:
+                              type: string
+                              example: 'http://localhost/api/v1/tasks/2'
+      tags:
+        - Endpoints
+    post:
+      summary: 'Store a newly created resource in storage.'
+      operationId: storeANewlyCreatedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  description: ''
+                  example: []
+                  properties:
+                    attributes:
+                      type: object
+                      description: ''
+                      example: []
+                      properties:
+                        title:
+                          type: string
+                          description: 'Must not be greater than 255 characters.'
+                          example: zjvlvhfew
+                        description:
+                          type: string
+                          description: 'Must not be greater than 500 characters.'
+                          example: 'Architecto sed eos sit qui tempora.'
+                        status:
+                          type: string
+                          description: ''
+                          example: D
+                          enum:
+                            - C
+                            - D
+                            - P
+                    relationships:
+                      type: object
+                      description: ''
+                      example: []
+                      properties:
+                        category:
+                          type: object
+                          description: ''
+                          example: []
+                          properties:
+                            data:
+                              type: object
+                              description: ''
+                              example: []
+                              properties:
+                                id:
+                                  type: integer
+                                  description: ''
+                                  example: '2'
+                                  enum:
+                                    - '2'
+                                    - '19'
+                                    - '20'
+  '/api/v1/tasks/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      operationId: displayTheSpecifiedResource
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  errors:
+                    status: 401
+                    message: 'You are not authorized to view this task'
+                    source: ''
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      status:
+                        type: integer
+                        example: 401
+                      message:
+                        type: string
+                        example: 'You are not authorized to view this task'
+                      source:
+                        type: string
+                        example: ''
+      tags:
+        - Endpoints
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      operationId: removeTheSpecifiedResourceFromStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the task.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+tags:
+  -
+    name: Endpoints
+    description: ''
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: 'You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.'
+security:
+  -
+    default: []
