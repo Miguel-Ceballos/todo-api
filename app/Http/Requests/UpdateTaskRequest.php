@@ -24,6 +24,8 @@ class UpdateTaskRequest extends BaseTaskRequest
         $user_categories = Auth::user()->categories;
         $categories = implode(',', $user_categories->pluck('id')->toArray());
         return [
+            'data' => 'required|array',
+            'data.attributes' => 'required|array',
             'data.relationships.category.data.id' => 'sometimes|integer|in:' . $categories,
             'data.attributes.title' => 'sometimes|string|max:255',
             'data.attributes.description' => 'sometimes|string|max:500',

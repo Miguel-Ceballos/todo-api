@@ -29,10 +29,32 @@ class BaseTaskRequest extends FormRequest
         return $attributesToUpdate;
     }
 
-    public function messages()
+    public function messages() : array
     {
         return [
             'data.attributes.status' => 'The data.attributes.status value is invalid. Please use C,P or D.'
+        ];
+    }
+
+    public function bodyParameters(): array
+    {
+        return [
+            'data.attributes.title' => [
+                'description' => "The task's title",
+                'example' => 'Buy milk',
+            ],
+            'data.attributes.description' => [
+                'description' => "The task's description",
+                'example' => 'Buy milk from the store',
+            ],
+            'data.attributes.status' => [
+                'description' => "The task's status",
+                'example' => 'P',
+            ],
+            'data.relationships.category.data.id' => [
+                'description' => "The category associated with the task",
+                'example' => '2',
+            ],
         ];
     }
 }

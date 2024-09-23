@@ -22,14 +22,25 @@ class StoreTaskRequest extends BaseTaskRequest
      */
     public function rules(): array
     {
+        $isTaskController = $this->routeIs('tasks.store');
         $user_categories = Auth::user()->categories;
         $categories = implode(',', $user_categories->pluck('id')->toArray());
 //        C: completed, D: Doing, P: Pending
-        return [
+        $rules = [
+            'data' => 'required|array',
+            'data.attributes' => 'required|array',
             'data.attributes.title' => 'required|string|max:255',
             'data.attributes.description' => 'nullable|string|max:500',
             'data.attributes.status' => 'required|string|in:C,D,P',
             'data.relationships.category.data.id' => 'required|integer|in:' . $categories
         ];
+
+        if ($isTaskController) {
+            $rules['data.relationships'] = 'required|array';
+            $rules['data.relationships.category'] = 'required|array';
+            $rules['data.relationships.category.data'] = 'required|array';
+        }
+
+        return $rules;
     }
 }
