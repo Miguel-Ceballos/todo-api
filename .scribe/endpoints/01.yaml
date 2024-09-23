@@ -1,0 +1,427 @@
+name: 'Managing Categories'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/categories
+    metadata:
+      groupName: 'Managing Categories'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get all categories'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":[{"type":"category","id":1,"attributes":{"title":"velit a","slug":"accusantium-sunt-ut"},"relationships":{"user":{"data":{"type":"user","id":2}}},"links":{"self":"http:\/\/localhost\/api\/v1\/categories\/1"}},{"type":"category","id":5,"attributes":{"title":"in doloremque","slug":"est-voluptatem-pariatur"},"relationships":{"user":{"data":{"type":"user","id":2}}},"links":{"self":"http:\/\/localhost\/api\/v1\/categories\/5"}},{"type":"category","id":10,"attributes":{"title":"similique nesciunt","slug":"officia-quia-sit"},"relationships":{"user":{"data":{"type":"user","id":2}}},"links":{"self":"http:\/\/localhost\/api\/v1\/categories\/10"}},{"type":"category","id":17,"attributes":{"title":"totam nobis","slug":"et-consequatur-eum"},"relationships":{"user":{"data":{"type":"user","id":2}}},"links":{"self":"http:\/\/localhost\/api\/v1\/categories\/17"}},{"type":"category","id":21,"attributes":{"title":"Test","slug":"test"},"relationships":{"user":{"data":{"type":"user","id":2}}},"links":{"self":"http:\/\/localhost\/api\/v1\/categories\/21"}}]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 7|bXi5PgoTb5n7JOvpuq4tcfqcWsA0PFAfNNRJl0G4efc6c621'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/categories
+    metadata:
+      groupName: 'Managing Categories'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create a category'
+      description: 'Creates a new category for the authenticated user.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      data:
+        name: data
+        description: ''
+        required: true
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes:
+        name: data.attributes
+        description: ''
+        required: true
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.title:
+        name: data.attributes.title
+        description: "The category's title. Must not be greater than 50 characters."
+        required: true
+        example: Home
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.slug:
+        name: data.attributes.slug
+        description: "The category's slug."
+        required: false
+        example: home
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      data:
+        attributes:
+          title: Home
+          slug: home
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+          "data": {
+          "type": "category",
+          "id": 31,
+          "attributes": {
+          "title": "Test 2",
+          "slug": "test-2"
+          },
+          "relationships": {
+          "user": {
+          "data": {
+          "type": "user",
+          "id": 2
+          }
+          }
+          },
+          "links": {
+          "self": "http://localhost/api/v1/categories/31"
+          }
+          }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 7|bXi5PgoTb5n7JOvpuq4tcfqcWsA0PFAfNNRJl0G4efc6c621'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/categories/{id}'
+    metadata:
+      groupName: 'Managing Categories'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Show a category'
+      description: 'Displays the specified category.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the category.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+          "data": {
+          "type": "category",
+          "id": 31,
+          "attributes": {
+          "title": "Test 2",
+          "slug": "test-2",
+          "createdAt": "2024-09-23T18:04:38.000000Z",
+          "updatedAt": "2024-09-23T18:04:38.000000Z"
+          },
+          "relationships": {
+          "user": {
+          "data": {
+          "type": "user",
+          "id": 2
+          }
+          }
+          },
+          "links": {
+          "self": "http://localhost/api/v1/categories/31"
+          }
+          }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 7|bXi5PgoTb5n7JOvpuq4tcfqcWsA0PFAfNNRJl0G4efc6c621'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/v1/categories/{id}'
+    metadata:
+      groupName: 'Managing Categories'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update a category'
+      description: 'Update the specified category.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the category.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      data:
+        name: data
+        description: ''
+        required: true
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes:
+        name: data.attributes
+        description: ''
+        required: true
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.title:
+        name: data.attributes.title
+        description: 'Must not be greater than 50 characters.'
+        required: true
+        example: w
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.slug:
+        name: data.attributes.slug
+        description: ''
+        required: false
+        example: excepturi
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.relationships.user.data:
+        name: data.relationships.user.data
+        description: ''
+        required: false
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.relationships.user:
+        name: data.relationships.user
+        description: ''
+        required: false
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.relationships:
+        name: data.relationships
+        description: ''
+        required: false
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.relationships.user.data.id:
+        name: data.relationships.user.data.id
+        description: "The category's user. This is not editable."
+        required: false
+        example: '2'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      data:
+        attributes:
+          title: w
+          slug: excepturi
+        relationships:
+          user:
+            data:
+              id: '2'
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+          "data": {
+          "type": "category",
+          "id": 31,
+          "attributes": {
+          "title": "category updated",
+          "slug": "category-updated"
+          },
+          "relationships": {
+          "user": {
+          "data": {
+          "type": "user",
+          "id": 2
+          }
+          }
+          },
+          "links": {
+          "self": "http://localhost/api/v1/categories/31"
+          }
+          }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 7|bXi5PgoTb5n7JOvpuq4tcfqcWsA0PFAfNNRJl0G4efc6c621'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/v1/categories/{id}'
+    metadata:
+      groupName: 'Managing Categories'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Delete a category'
+      description: 'Delete the specified category.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the category.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+          "data": [],
+          "message": "Category deleted successfully",
+          "status": 200
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 7|bXi5PgoTb5n7JOvpuq4tcfqcWsA0PFAfNNRJl0G4efc6c621'
+    controller: null
+    method: null
+    route: null
+    custom: []

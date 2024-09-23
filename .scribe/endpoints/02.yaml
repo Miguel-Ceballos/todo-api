@@ -1,0 +1,607 @@
+name: 'Managing Tasks by Category'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/categories/{category_id}/tasks'
+    metadata:
+      groupName: 'Managing Tasks by Category'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get all tasks'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      category_id:
+        name: category_id
+        description: 'The ID of the category.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      category_id: 1
+    queryParameters:
+      sort:
+        name: sort
+        description: 'Data field(s) to sort by. Multiple fields can be specified by separating them with a comma. Denote descending sort with a minis (-) sign.'
+        required: false
+        example: 'sort=-created_at,title'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      'filter[status]':
+        name: 'filter[status]'
+        description: 'Filter by status code: C: completed, D: Doing, P: Pending.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'filter[title]':
+        name: 'filter[title]'
+        description: 'Filter by title. Wildcards ares supported.'
+        required: false
+        example: 'filter[title]=*test*'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+    cleanQueryParameters:
+      sort: 'sort=-created_at,title'
+      'filter[title]': 'filter[title]=*test*'
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":[{"type":"task","id":21,"attributes":{"title":"quam aut","description":"Eum accusantium vitae at minima.","status":"C","created_at":"2024-09-15T18:43:54.000000Z","updated_at":"2024-09-19T01:31:34.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/21"}},{"type":"task","id":41,"attributes":{"title":"assumenda explicabo","description":"Accusantium est ut in est minima et earum. Quis totam molestiae velit occaecati occaecati ducimus fugit.","status":"C","created_at":"2024-09-15T18:43:55.000000Z","updated_at":"2024-09-15T18:43:55.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/41"}},{"type":"task","id":61,"attributes":{"title":"molestiae magnam","description":"Aliquam magnam accusantium beatae facilis quod nulla aperiam.","status":"C","created_at":"2024-09-15T18:43:55.000000Z","updated_at":"2024-09-15T18:43:55.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/61"}},{"type":"task","id":81,"attributes":{"title":"architecto quis","description":"Totam et pariatur commodi et quam voluptates sint.","status":"D","created_at":"2024-09-15T18:43:56.000000Z","updated_at":"2024-09-15T18:43:56.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/81"}},{"type":"task","id":101,"attributes":{"title":"facilis ab","description":"Odit dolorem dolorem neque ipsum reiciendis.","status":"C","created_at":"2024-09-15T18:43:56.000000Z","updated_at":"2024-09-15T18:43:56.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/101"}},{"type":"task","id":121,"attributes":{"title":"doloribus consequuntur","description":"Reprehenderit sit praesentium enim dolor et rerum. Cumque et et eveniet iste laudantium voluptates.","status":"P","created_at":"2024-09-15T18:43:56.000000Z","updated_at":"2024-09-15T18:43:56.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/121"}},{"type":"task","id":141,"attributes":{"title":"nisi architecto","description":"Doloremque libero aut ea doloribus quia minima qui hic.","status":"D","created_at":"2024-09-15T18:43:57.000000Z","updated_at":"2024-09-15T18:43:57.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/141"}},{"type":"task","id":161,"attributes":{"title":"fugit sint","description":"Amet itaque necessitatibus quos voluptatibus natus est.","status":"C","created_at":"2024-09-15T18:43:57.000000Z","updated_at":"2024-09-15T18:43:57.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/161"}},{"type":"task","id":181,"attributes":{"title":"voluptate praesentium","description":"Unde excepturi et tempora tempore quas nulla.","status":"D","created_at":"2024-09-15T18:43:58.000000Z","updated_at":"2024-09-15T18:43:58.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/181"}},{"type":"task","id":201,"attributes":{"title":"impedit quidem","description":"Et consectetur recusandae optio eum ut.","status":"P","created_at":"2024-09-15T18:43:58.000000Z","updated_at":"2024-09-15T18:43:58.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/201"}},{"type":"task","id":221,"attributes":{"title":"id a","description":"Tenetur molestias sed non molestiae voluptates ea. Aut tempora explicabo omnis tempora.","status":"P","created_at":"2024-09-15T18:43:59.000000Z","updated_at":"2024-09-15T18:43:59.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/221"}},{"type":"task","id":241,"attributes":{"title":"ratione nulla","description":"Soluta consequatur quae cum quo dolorem id soluta tempora. Earum quia eius tempore.","status":"C","created_at":"2024-09-15T18:43:59.000000Z","updated_at":"2024-09-15T18:43:59.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/241"}},{"type":"task","id":261,"attributes":{"title":"debitis autem","description":"Blanditiis quo accusamus temporibus praesentium qui aut maiores.","status":"P","created_at":"2024-09-15T18:44:00.000000Z","updated_at":"2024-09-15T18:44:00.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/261"}},{"type":"task","id":281,"attributes":{"title":"odio eos","description":"Numquam asperiores quis optio esse quod explicabo omnis assumenda.","status":"D","created_at":"2024-09-15T18:44:00.000000Z","updated_at":"2024-09-15T18:44:00.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/281"}},{"type":"task","id":301,"attributes":{"title":"et dolores","description":"Neque voluptate ut ducimus voluptas similique non.","status":"C","created_at":"2024-09-15T18:44:00.000000Z","updated_at":"2024-09-15T18:44:00.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/301"}},{"type":"task","id":321,"attributes":{"title":"dolor ut","description":"Suscipit eum ratione facere consequatur. Exercitationem odit laborum quam et ex.","status":"C","created_at":"2024-09-15T18:44:01.000000Z","updated_at":"2024-09-15T18:44:01.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/321"}},{"type":"task","id":341,"attributes":{"title":"nemo fuga","description":"Molestiae asperiores voluptate qui eius et qui.","status":"C","created_at":"2024-09-15T18:44:01.000000Z","updated_at":"2024-09-15T18:44:01.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/341"}},{"type":"task","id":361,"attributes":{"title":"eaque aut","description":"Sed accusamus aut ratione labore.","status":"P","created_at":"2024-09-15T18:44:02.000000Z","updated_at":"2024-09-15T18:44:02.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/361"}},{"type":"task","id":381,"attributes":{"title":"ipsam dignissimos","description":"Quam quis omnis et dolorem aut esse.","status":"P","created_at":"2024-09-15T18:44:02.000000Z","updated_at":"2024-09-15T18:44:02.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/381"}},{"type":"task","id":401,"attributes":{"title":"quas quibusdam","description":"Esse molestiae dolores consequatur suscipit ut blanditiis eligendi. Voluptatum maxime autem dolor nihil eos perferendis eius ullam.","status":"D","created_at":"2024-09-15T18:44:03.000000Z","updated_at":"2024-09-15T18:44:03.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/401"}},{"type":"task","id":421,"attributes":{"title":"aut dolores","description":"Quis natus unde vel omnis repudiandae.","status":"D","created_at":"2024-09-15T18:44:03.000000Z","updated_at":"2024-09-15T18:44:03.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/421"}},{"type":"task","id":441,"attributes":{"title":"molestias cum","description":"Porro et vel quia nihil harum dolores officiis inventore.","status":"D","created_at":"2024-09-15T18:44:03.000000Z","updated_at":"2024-09-15T18:44:03.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/441"}},{"type":"task","id":461,"attributes":{"title":"perspiciatis et","description":"Esse nam harum maxime fugit.","status":"P","created_at":"2024-09-15T18:44:04.000000Z","updated_at":"2024-09-15T18:44:04.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/461"}},{"type":"task","id":481,"attributes":{"title":"distinctio magnam","description":"At voluptas nihil reiciendis laboriosam in et. Illum voluptas sed atque voluptatum fugit.","status":"D","created_at":"2024-09-15T18:44:04.000000Z","updated_at":"2024-09-15T18:44:04.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/481"}},{"type":"task","id":501,"attributes":{"title":"quo vero","description":"Perspiciatis omnis doloribus non cum. Sequi ab sunt voluptas voluptatem hic.","status":"D","created_at":"2024-09-15T18:44:05.000000Z","updated_at":"2024-09-15T18:44:05.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/501"}},{"type":"task","id":521,"attributes":{"title":"est ut","description":"Ipsum accusamus nulla nemo temporibus ad reiciendis.","status":"C","created_at":"2024-09-15T18:44:05.000000Z","updated_at":"2024-09-15T18:44:05.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/521"}},{"type":"task","id":541,"attributes":{"title":"est quos","description":"Qui et corrupti eos.","status":"C","created_at":"2024-09-15T18:44:06.000000Z","updated_at":"2024-09-15T18:44:06.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/541"}},{"type":"task","id":561,"attributes":{"title":"dolorem dolorum","description":"Ut voluptatem ut autem in.","status":"C","created_at":"2024-09-15T18:44:06.000000Z","updated_at":"2024-09-15T18:44:06.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/561"}},{"type":"task","id":581,"attributes":{"title":"reiciendis est","description":"Tenetur voluptatem esse sit et suscipit neque. Beatae incidunt voluptatibus ipsam voluptas enim qui iste quia.","status":"P","created_at":"2024-09-15T18:44:06.000000Z","updated_at":"2024-09-15T18:44:06.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/581"}},{"type":"task","id":602,"attributes":{"title":"Task test","description":"Task test","status":"P","created_at":"2024-09-23T17:16:52.000000Z","updated_at":"2024-09-23T17:16:52.000000Z"},"relationships":{"user":{"data":{"type":"user","id":2}},"category":{"data":{"type":"category","id":1}}},"links":{"self":"http:\/\/localhost\/api\/v1\/tasks\/602"}}]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 7|bXi5PgoTb5n7JOvpuq4tcfqcWsA0PFAfNNRJl0G4efc6c621'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/v1/categories/{category_id}/tasks'
+    metadata:
+      groupName: 'Managing Tasks by Category'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create a task'
+      description: 'Creates a new task for the authenticated user.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      category_id:
+        name: category_id
+        description: 'The ID of the category.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      category_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      data:
+        name: data
+        description: ''
+        required: true
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes:
+        name: data.attributes
+        description: ''
+        required: true
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.title:
+        name: data.attributes.title
+        description: "The task's title. Must not be greater than 255 characters."
+        required: true
+        example: 'Buy milk'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.description:
+        name: data.attributes.description
+        description: "The task's description. Must not be greater than 500 characters."
+        required: false
+        example: 'Buy milk from the store'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.status:
+        name: data.attributes.status
+        description: "The task's status."
+        required: true
+        example: P
+        type: string
+        enumValues:
+          - C
+          - D
+          - P
+        exampleWasSpecified: false
+        custom: []
+      data.relationships.category.data:
+        name: data.relationships.category.data
+        description: ''
+        required: false
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.relationships.category:
+        name: data.relationships.category
+        description: ''
+        required: false
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.relationships:
+        name: data.relationships
+        description: ''
+        required: false
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.relationships.category.data.id:
+        name: data.relationships.category.data.id
+        description: 'The category associated with the task.'
+        required: true
+        example: 2
+        type: integer
+        enumValues:
+          - '1'
+          - '5'
+          - '10'
+          - '17'
+          - '21'
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      data:
+        attributes:
+          title: 'Buy milk'
+          description: 'Buy milk from the store'
+          status: P
+        relationships:
+          category:
+            data:
+              id: 2
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+          "data": {
+           "type": "task",
+           "id": 602,
+           "attributes": {
+               "title": "Task test",
+               "description": "Task description",
+               "status": "P",
+               "created_at": "2024-09-23T17:16:52.000000Z",
+               "updated_at": "2024-09-23T17:16:52.000000Z"
+           },
+           "relationships": {
+               "user": {
+                   "data": {
+                       "type": "user",
+                       "id": 2
+                   }
+               },
+               "category": {
+                   "data": {
+                       "type": "category",
+                       "id": 1
+                   }
+               }
+           },
+           "links": {
+               "self": "http://localhost/api/v1/tasks/602"
+           },
+          },
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 7|bXi5PgoTb5n7JOvpuq4tcfqcWsA0PFAfNNRJl0G4efc6c621'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/categories/{category_id}/tasks/{id}'
+    metadata:
+      groupName: 'Managing Tasks by Category'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Show a task'
+      description: 'Displays the specified task.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      category_id:
+        name: category_id
+        description: 'The ID of the category.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      id:
+        name: id
+        description: 'The ID of the task.'
+        required: true
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      category_id: 1
+      id: 2
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+          "data": {
+          "type": "task",
+          "id": 5,
+          "attributes": {
+          "title": "quis repudiandae",
+          "description": "Sed pariatur earum atque harum porro optio reprehenderit.",
+          "status": "C",
+          "created_at": "2024-09-15T18:43:54.000000Z",
+          "updated_at": "2024-09-19T01:31:30.000000Z"
+          },
+          "relationships": {
+          "user": {
+          "data": {
+          "type": "user",
+          "id": 2
+          }
+          },
+          "category": {
+          "data": {
+          "type": "category",
+          "id": 5
+          }
+          }
+          },
+          "links": {
+          "self": "http://localhost/api/v1/tasks/5"
+          }
+          }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 7|bXi5PgoTb5n7JOvpuq4tcfqcWsA0PFAfNNRJl0G4efc6c621'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/v1/categories/{category_id}/tasks/{id}'
+    metadata:
+      groupName: 'Managing Tasks by Category'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update a task'
+      description: 'update the specified task.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      category_id:
+        name: category_id
+        description: 'The ID of the category.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      id:
+        name: id
+        description: 'The ID of the task.'
+        required: true
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      category_id: 1
+      id: 2
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      data:
+        name: data
+        description: ''
+        required: true
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes:
+        name: data.attributes
+        description: ''
+        required: true
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.relationships.category.data:
+        name: data.relationships.category.data
+        description: ''
+        required: false
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.relationships.category:
+        name: data.relationships.category
+        description: ''
+        required: false
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.relationships:
+        name: data.relationships
+        description: ''
+        required: false
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.relationships.category.data.id:
+        name: data.relationships.category.data.id
+        description: 'The category associated with the task.'
+        required: false
+        example: 2
+        type: integer
+        enumValues:
+          - '1'
+          - '5'
+          - '10'
+          - '17'
+          - '21'
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.title:
+        name: data.attributes.title
+        description: "The task's title. Must not be greater than 255 characters."
+        required: false
+        example: 'Buy milk'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.description:
+        name: data.attributes.description
+        description: "The task's description. Must not be greater than 500 characters."
+        required: false
+        example: 'Buy milk from the store'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.status:
+        name: data.attributes.status
+        description: "The task's status."
+        required: false
+        example: P
+        type: string
+        enumValues:
+          - C
+          - D
+          - P
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      data:
+        attributes:
+          title: 'Buy milk'
+          description: 'Buy milk from the store'
+          status: P
+        relationships:
+          category:
+            data:
+              id: 2
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+          "data": {
+           "type": "task",
+           "id": 602,
+           "attributes": {
+               "title": "Task test updated",
+               "description": "Task description updated",
+               "status": "P",
+               "created_at": "2024-09-23T17:16:52.000000Z",
+               "updated_at": "2024-09-23T17:16:52.000000Z"
+           },
+           "relationships": {
+               "user": {
+                   "data": {
+                       "type": "user",
+                       "id": 2
+                   }
+               },
+               "category": {
+                   "data": {
+                       "type": "category",
+                       "id": 1
+                   }
+               }
+           },
+           "links": {
+               "self": "http://localhost/api/v1/tasks/602"
+           },
+          },
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 7|bXi5PgoTb5n7JOvpuq4tcfqcWsA0PFAfNNRJl0G4efc6c621'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/v1/categories/{category_id}/tasks/{id}'
+    metadata:
+      groupName: 'Managing Tasks by Category'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Delete a task'
+      description: 'Delete the specified task.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      category_id:
+        name: category_id
+        description: 'The ID of the category.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      id:
+        name: id
+        description: 'The ID of the task.'
+        required: true
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      category_id: 1
+      id: 2
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+              "data": [],
+              "message": "Task deleted successfully",
+              "status": 200
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 7|bXi5PgoTb5n7JOvpuq4tcfqcWsA0PFAfNNRJl0G4efc6c621'
+    controller: null
+    method: null
+    route: null
+    custom: []
