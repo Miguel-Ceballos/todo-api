@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StoreTaskRequest extends BaseTaskRequest
 {
@@ -21,7 +22,7 @@ class StoreTaskRequest extends BaseTaskRequest
      */
     public function rules(): array
     {
-        $user_categories = $this->user()->categories;
+        $user_categories = Auth::user()->categories;
         $categories = implode(',', $user_categories->pluck('id')->toArray());
 //        C: completed, D: Doing, P: Pending
         return [

@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Support\Facades\Auth;
+
 class UpdateTaskRequest extends BaseTaskRequest
 {
     /**
@@ -19,7 +21,7 @@ class UpdateTaskRequest extends BaseTaskRequest
      */
     public function rules(): array
     {
-        $user_categories = $this->user()->categories;
+        $user_categories = Auth::user()->categories;
         $categories = implode(',', $user_categories->pluck('id')->toArray());
         return [
             'data.relationships.category.data.id' => 'sometimes|integer|in:' . $categories,
