@@ -14,6 +14,22 @@ class AuthController extends Controller
 {
     use ApiResponses;
 
+
+    /**
+     * Register.
+     *
+     * Register the user and returns the user's token.
+     *
+     * @unauthenticated
+     * @group Authentication
+     * @response 200 {
+    "data": {
+    "token": "{YOUR_AUTH_KEY}"
+    },
+    "message": "Authenticated",
+    "status": 200
+    }
+     */
     public function register(RegisterUserRequest $request)
     {
         $user = User::create($request->validated());
@@ -30,6 +46,22 @@ class AuthController extends Controller
         );
     }
 
+
+    /**
+     * Login.
+     *
+     * Authenticates the user and returns the user's token.
+     *
+     * @unauthenticated
+     * @group Authentication
+     * @response 200 {
+      "data": {
+        "token": "{YOUR_AUTH_KEY}"
+      },
+      "message": "Authenticated",
+      "status": 200
+      }
+     */
     public function login(LoginUserRequest $request)
     {
         $request->validated($request->all());
@@ -52,6 +84,15 @@ class AuthController extends Controller
         );
     }
 
+
+    /**
+     * Logout.
+     *
+     * Signs out the user and destroys the API token.
+     *
+     * @group Authentication
+     * @response 200 {}
+     */
     public function logout(Request $request)
     {
         $request->user()->currentAccessToken()->delete();

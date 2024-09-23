@@ -27,4 +27,18 @@ class LoginUserRequest extends FormRequest
             'password' => [ 'required', 'string', Password::min(8) ],
         ];
     }
+
+    public function bodyParameters(): array
+    {
+        return [
+            'email' => [
+                'description' => "The user's email",
+                'example' => 'john@example.com',
+            ],
+            'password' => [
+                'description' => "The user's password",
+                'example' => 'no-example',
+            ],
+        ];
+    }
 }

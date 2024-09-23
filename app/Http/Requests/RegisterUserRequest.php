@@ -25,7 +25,25 @@ class RegisterUserRequest extends FormRequest
         return [
             'name' => [ 'required', 'string', 'min:3', 'max:255' ],
             'email' => [ 'required', 'email', 'string' ],
-            'password' => [ 'required', 'string', Password::min(8) ],
+            'password' => [ 'required', 'string', 'min:8' ],
+        ];
+    }
+
+    public function bodyParameters(): array
+    {
+        return [
+            'name' => [
+                'description' => "The user's name",
+                'example' => 'John Doe',
+            ],
+            'email' => [
+                'description' => "The user's email",
+                'example' => 'john@example.com',
+            ],
+            'password' => [
+                'description' => "The user's password",
+                'example' => 'no-example',
+            ],
         ];
     }
 }
