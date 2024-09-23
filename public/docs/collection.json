@@ -9,8 +9,8 @@
         }
     ],
     "info": {
-        "name": "4TODO API Documentation",
-        "_postman_id": "e556a679-4069-49d3-9c53-b32d0f4be8e2",
+        "name": "TODO API Documentation",
+        "_postman_id": "7d7566cc-4775-4937-8229-f06761fddd13",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -315,7 +315,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"data\":{\"attributes\":{\"title\":\"w\",\"slug\":\"excepturi\"},\"relationships\":{\"user\":{\"data\":{\"id\":\"2\"}}}}}"
+                            "raw": "{\"data\":{\"attributes\":{\"title\":\"eoz\",\"slug\":\"quos\"},\"relationships\":{\"user\":{\"data\":{\"id\":\"2\"}}}}}"
                         },
                         "description": "Update the specified category."
                     },

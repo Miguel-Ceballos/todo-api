@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: '4TODO API Documentation'
+  title: 'TODO API Documentation'
   description: ''
   version: 1.0.0
 servers:
@@ -644,11 +644,11 @@ paths:
                         title:
                           type: string
                           description: 'Must not be greater than 50 characters.'
-                          example: w
+                          example: eoz
                         slug:
                           type: string
                           description: ''
-                          example: excepturi
+                          example: quos
                     relationships:
                       type: object
                       description: ''
