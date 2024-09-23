@@ -28,17 +28,21 @@ class StoreCategoryRequest extends BaseCategoryRequest
         $isCategoryExists = Category::where('slug', Str::slug($this->input('data.attributes.title')))
             ->where('user_id', Auth::user()->id)
             ->exists();
+
+        $rules = [
+            'data' => 'required|array',
+            'data.attributes' => 'required|array',
+        ];
+
         if ($isCategoryExists) {
-            return [
-                'data.attributes.title' => 'required|string|max:50|unique:categories,title',
-                'data.attributes.slug' => 'string|unique:categories,slug',
-            ];
+            $rules['data.attributes.title'] = 'required|string|max:50|unique:categories,title';
+            $rules['data.attributes.slug'] = 'string|unique:categories,slug';
+            return $rules;
         }
 
-        return [
-            'data.attributes.title' => 'required|string|max:50',
-            'data.attributes.slug' => 'string',
-        ];
+        $rules['data.attributes.title'] = 'required|string|max:50';
+        $rules['data.attributes.slug'] = 'string';
+        return $rules;
     }
 
     public function messages(): array

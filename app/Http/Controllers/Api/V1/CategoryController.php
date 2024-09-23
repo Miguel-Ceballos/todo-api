@@ -18,7 +18,10 @@ class CategoryController extends ApiController
     protected $policyClass = CategoryPolicy::class;
 
     /**
-     * Display a listing of the resource.
+     * Get all categories
+     *
+     * @group Managing Categories
+     *
      */
     public function index()
     {
@@ -26,7 +29,33 @@ class CategoryController extends ApiController
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Create a category
+     *
+     * Creates a new category for the authenticated user.
+     *
+     * @group Managing Categories
+     * @response 201
+     * {
+     * "data": {
+     * "type": "category",
+     * "id": 31,
+     * "attributes": {
+     * "title": "Test 2",
+     * "slug": "test-2"
+     * },
+     * "relationships": {
+     * "user": {
+     * "data": {
+     * "type": "user",
+     * "id": 2
+     * }
+     * }
+     * },
+     * "links": {
+     * "self": "http://localhost/api/v1/categories/31"
+     * }
+     * }
+     * }
      */
     public function store(StoreCategoryRequest $request)
     {
@@ -34,7 +63,35 @@ class CategoryController extends ApiController
     }
 
     /**
-     * Display the specified resource.
+     * Show a category
+     *
+     * Displays the specified category.
+     *
+     * @group Managing Categories
+     * @response 201
+     * {
+     * "data": {
+     * "type": "category",
+     * "id": 31,
+     * "attributes": {
+     * "title": "Test 2",
+     * "slug": "test-2",
+     * "createdAt": "2024-09-23T18:04:38.000000Z",
+     * "updatedAt": "2024-09-23T18:04:38.000000Z"
+     * },
+     * "relationships": {
+     * "user": {
+     * "data": {
+     * "type": "user",
+     * "id": 2
+     * }
+     * }
+     * },
+     * "links": {
+     * "self": "http://localhost/api/v1/categories/31"
+     * }
+     * }
+     * }
      */
     public function show(Category $category)
     {
@@ -45,7 +102,33 @@ class CategoryController extends ApiController
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update a category
+     *
+     * Update the specified category.
+     *
+     * @group Managing Categories
+     * @response 201
+     * {
+     * "data": {
+     * "type": "category",
+     * "id": 31,
+     * "attributes": {
+     * "title": "category updated",
+     * "slug": "category-updated"
+     * },
+     * "relationships": {
+     * "user": {
+     * "data": {
+     * "type": "user",
+     * "id": 2
+     * }
+     * }
+     * },
+     * "links": {
+     * "self": "http://localhost/api/v1/categories/31"
+     * }
+     * }
+     * }
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
@@ -57,7 +140,17 @@ class CategoryController extends ApiController
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete a category
+     *
+     * Delete the specified category.
+     *
+     * @group Managing Categories
+     * @response 200
+     * {
+     * "data": [],
+     * "message": "Category deleted successfully",
+     * "status": 200
+     * }
      */
     public function destroy(Category $category)
     {

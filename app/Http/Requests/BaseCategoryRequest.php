@@ -16,4 +16,17 @@ class BaseCategoryRequest extends FormRequest
             'slug' => Str::slug($this->input('data.attributes.title'))
         ];
     }
+
+    public function bodyParameters(): array {
+        return [
+            'data.attributes.title' => [
+                'description' => "The category's title",
+                'example' => 'Home',
+            ],
+            'data.attributes.slug' => [
+                'description' => "The category's slug",
+                'example' => 'home',
+            ],
+        ];
+    }
 }

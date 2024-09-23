@@ -22,9 +22,21 @@ class UpdateCategoryRequest extends BaseCategoryRequest
     public function rules(): array
     {
         return [
+            'data' => 'required|array',
+            'data.attributes' => 'required|array',
             'data.attributes.title' => 'required|string|max:50',
             'data.attributes.slug' => 'string',
             'data.relationships.user.data.id' => ['prohibited'],
+        ];
+    }
+
+    public function bodyParameters(): array
+    {
+        return [
+            'data.relationships.user.data.id' => [
+                'description' => "The category's user. This is not editable",
+                'example' => '2',
+            ],
         ];
     }
 }
