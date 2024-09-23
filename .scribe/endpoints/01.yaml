@@ -273,7 +273,7 @@ endpoints:
         name: data.attributes.title
         description: 'Must not be greater than 50 characters.'
         required: true
-        example: w
+        example: eoz
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -282,7 +282,7 @@ endpoints:
         name: data.attributes.slug
         description: ''
         required: false
-        example: excepturi
+        example: quos
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -326,8 +326,8 @@ endpoints:
     cleanBodyParameters:
       data:
         attributes:
-          title: w
-          slug: excepturi
+          title: eoz
+          slug: quos
         relationships:
           user:
             data:
