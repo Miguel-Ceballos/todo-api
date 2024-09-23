@@ -28,9 +28,6 @@ class UserResource extends JsonResource
                     'updated_at' => $this->updated_at,
                 ]),
             ],
-            'includes' => [
-                'message' => 'todo'
-            ],
             'links' => [
                 'self' => route('user.show', $this->id),
             ],
