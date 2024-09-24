@@ -98,7 +98,7 @@ class CategoryController extends ApiController
     {
         if ( $this->isAble('view', $category) ) {
             return CategoryResource::collection(
-                $category->filter($filters)->get()
+                Category::where('id', $category->id)->filter($filters)->get()
             );
         }
         return $this->notAuthorized('You are not authorized to view that category');
