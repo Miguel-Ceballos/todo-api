@@ -28,7 +28,7 @@ class UpdateTaskRequest extends BaseTaskRequest
             'data.attributes' => 'required|array',
             'data.relationships.category.data.id' => 'sometimes|integer|in:' . $categories,
             'data.attributes.title' => 'sometimes|string|max:255',
-            'data.attributes.description' => 'sometimes|string|max:500',
+            'data.attributes.description' => 'nullable|string|max:500',
             'data.attributes.status' => 'sometimes|string|in:C,D,P',
         ];
     }
