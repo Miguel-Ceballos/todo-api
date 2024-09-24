@@ -26,7 +26,7 @@ class Category extends Model
 
     public function tasks(): HasMany
     {
-        return $this->hasMany(Task::class);
+        return $this->hasMany(Task::class)->where('tasks.status', '<>', 'C');
     }
 
     public function scopeFilter(Builder $builder, QueryFilter $filters)
