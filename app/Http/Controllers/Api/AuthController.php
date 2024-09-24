@@ -34,6 +34,12 @@ class AuthController extends Controller
     {
         $user = User::create($request->validated());
 
+        $user->categories()->createMany([
+            ['title' => 'Personal', 'slug' => 'personal'],
+            ['title' => 'Work', 'slug' => 'work'],
+            ['title' => 'Others', 'slug' => 'others'],
+        ]);
+
         return $this->ok(
             'Register successfully',
             [
