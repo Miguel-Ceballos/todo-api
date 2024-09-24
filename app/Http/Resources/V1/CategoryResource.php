@@ -33,6 +33,7 @@ class CategoryResource extends JsonResource
                     ]
                 ]
             ],
+            'includes' => TaskResource::collection($this->whenLoaded('tasks')),
             'links' => [
                 'self' => route('categories.show', ['category' => $this->id])
             ]

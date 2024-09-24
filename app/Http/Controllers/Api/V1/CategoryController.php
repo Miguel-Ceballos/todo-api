@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Filters\V1\CategoryFilter;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Http\Resources\V1\CategoryResource;
@@ -93,10 +94,12 @@ class CategoryController extends ApiController
      * }
      * }
      */
-    public function show(Category $category)
+    public function show(Category $category, CategoryFilter $filters)
     {
         if ( $this->isAble('view', $category) ) {
-            return new CategoryResource($category);
+            return CategoryResource::collection(
+                $category->filter($filters)->get()
+            );
         }
         return $this->notAuthorized('You are not authorized to view that category');
     }
