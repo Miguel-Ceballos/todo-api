@@ -12,7 +12,7 @@ class Task extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'category_id', 'title', 'description', 'status'];
+    protected $fillable = ['user_id', 'category_id', 'title', 'description', 'status', 'due_date'];
 
     public function author(): BelongsTo
     {

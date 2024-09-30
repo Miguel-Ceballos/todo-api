@@ -45,4 +45,9 @@ class TaskFilter extends QueryFilter
     {
         return $this->builder->where('user_id', Auth::user()->id)->whereIn('status', explode(',', $value));
     }
+
+    public function due_date($value)
+    {
+        return $this->builder->whereDate('due_date', $value);
+    }
 }

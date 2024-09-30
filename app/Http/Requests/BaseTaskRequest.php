@@ -13,6 +13,7 @@ class BaseTaskRequest extends FormRequest
             'data.attributes.title' => 'title',
             'data.attributes.description' => 'description',
             'data.attributes.status' => 'status',
+            'data.attributes.due_date' => 'due_date',
             'data.relationships.category.data.id' => 'category_id',
         ], $otherAttributes);
 

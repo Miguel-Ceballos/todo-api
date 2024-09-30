@@ -32,6 +32,7 @@ class StoreTaskRequest extends BaseTaskRequest
             'data.attributes.title' => 'required|string|max:255',
             'data.attributes.description' => 'nullable|string|max:500',
             'data.attributes.status' => 'required|string|in:C,D,P',
+            'data.attributes.due_date' => 'nullable|date',
             'data.relationships.category.data.id' => 'required|integer|in:' . $categories
         ];
 
