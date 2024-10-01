@@ -26,7 +26,7 @@ class StoreCategoryRequest extends BaseCategoryRequest
     public function rules(): array
     {
         $isCategoryExists = Category::where('slug', Str::slug($this->input('data.attributes.title')))
-            ->where('user_id', Auth::user()->id)
+            ->where('user_id', Auth::id())
             ->exists();
 
         $rules = [

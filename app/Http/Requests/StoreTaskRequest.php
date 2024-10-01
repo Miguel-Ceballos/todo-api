@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Category;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,7 +24,7 @@ class StoreTaskRequest extends BaseTaskRequest
     public function rules(): array
     {
         $isTaskController = $this->routeIs('tasks.store');
-        $user_categories = Auth::user()->categories;
+        $user_categories = Category::where('user_id', Auth::id());
         $categories = implode(',', $user_categories->pluck('id')->toArray());
 //        C: completed, D: Doing, P: Pending
         $rules = [

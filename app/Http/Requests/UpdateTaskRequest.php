@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 
 class UpdateTaskRequest extends BaseTaskRequest
@@ -21,7 +22,7 @@ class UpdateTaskRequest extends BaseTaskRequest
      */
     public function rules(): array
     {
-        $user_categories = Auth::user()->categories;
+        $user_categories = Category::where('user_id', Auth::id());
         $categories = implode(',', $user_categories->pluck('id')->toArray());
         return [
             'data' => 'required|array',
@@ -30,7 +31,7 @@ class UpdateTaskRequest extends BaseTaskRequest
             'data.attributes.title' => 'sometimes|string|max:255',
             'data.attributes.description' => 'nullable|string|max:500',
             'data.attributes.status' => 'sometimes|string|in:C,D,P',
-            'data.attributes.due_date' => 'nullable|date,
+            'data.attributes.due_date' => 'nullable|date',
         ];
     }
 }
